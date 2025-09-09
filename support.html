@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-language" content="zh-Hant, en" />
-  <title>KidStickers 支援 Support</title>
+  <title>KidStickers & TogetherStickers 支援 Support</title>
   <style>
     :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
     @media (prefers-color-scheme: dark){
@@ -35,8 +35,8 @@
   </div>
 
   <h1>
-    <span class="i18n zh">KidStickers 支援 <span class="muted">Support</span></span>
-    <span class="i18n en">KidStickers <span class="muted">Support</span></span>
+    <span class="i18n zh">KidStickers & TogetherStickers 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">KidStickers & TogetherStickers <span class="muted">Support</span></span>
   </h1>
 
   <div class="card">
@@ -44,8 +44,8 @@
       <span class="i18n zh">聯絡我們 Contact</span>
       <span class="i18n en">Contact</span>
     </h2>
-    <p class="i18n zh">感謝您使用《奇貼 / KidStickers》！若您需要協助、回報問題或提供建議，請來信：</p>
-    <p class="i18n en">Thanks for using KidStickers! If you need help, want to report an issue, or share feedback, please email us:</p>
+    <p class="i18n zh">感謝您使用《奇貼 / KidStickers》與《一起貼 / TogetherStickers》！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using KidStickers and TogetherStickers! If you need help, want to report an issue, or share feedback, please email us:</p>
     <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
   </div>
 
@@ -55,11 +55,11 @@
       <span class="i18n en">FAQ</span>
     </h2>
     <ul>
-      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。本 App 不建立帳號，透過 iCloud 在同一 Apple ID 下同步。</li>
-      <li class="i18n en"><b>Do I need to sign in?</b> No. The app does not create accounts and syncs via iCloud under the same Apple ID.</li>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。這些 App 不建立帳號，透過 iCloud 在同一 Apple ID 下同步。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. These apps do not create accounts and sync via iCloud under the same Apple ID.</li>
 
-      <li class="i18n zh"><b>我的資料存在哪裡？</b> 您的貼紙簿資料儲存在 iCloud 的私人資料庫（CloudKit Private DB），只有您可存取。</li>
-      <li class="i18n en"><b>Where is my data stored?</b> Your sticker book data is stored in your iCloud Private Database (CloudKit Private DB) and only you can access it.</li>
+      <li class="i18n zh"><b>我的資料存在哪裡？</b> 您的貼紙簿資料儲存在 iCloud 的私人資料庫（CloudKit Private DB），只有您可存取。TogetherStickers 的共享功能會將共享資料存在 iCloud 共享資料庫中，僅限共享發起者與受邀者能檢視。</li>
+      <li class="i18n en"><b>Where is my data stored?</b> Your sticker book data is stored in your iCloud Private Database (CloudKit Private DB) and only you can access it. TogetherStickers' sharing feature stores shared data in iCloud Shared Database, accessible only to the share creator and invitees.</li>
 
       <li class="i18n zh"><b>是否會顯示廣告？</b> 是，為維護服務，我們使用廣告支援 App 的免費提供。</li>
       <li class="i18n en"><b>Will the app show ads?</b> Yes. To keep the service sustainable, we use ads to support offering the app for free.</li>
@@ -84,7 +84,7 @@
       const zhBtn = document.getElementById('btn-zh');
       const enBtn = document.getElementById('btn-en');
       const setTitle = (lang) => {
-        document.title = (lang === 'en') ? 'KidStickers Support' : 'KidStickers 支援 Support';
+        document.title = (lang === 'en') ? 'KidStickers & TogetherStickers Support' : 'KidStickers & TogetherStickers 支援 Support';
       };
       const setLang = (lang) => {
         document.documentElement.setAttribute('lang', lang);
