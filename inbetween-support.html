@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>射龍門 InBetween 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">射龍門 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">InBetween <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們 Contact</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用《射龍門 / InBetween》！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using InBetween! If you need help, want to report an issue, or share feedback, please email us:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需在 App 內登入，只要在 iOS 設備上的遊戲或 Game Center 有創建身份，就能連線跟朋友用同播共享邊聊天邊玩，或跟遊戲大廳其他玩家快速配對遊玩。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No in-app login required. As long as you have a Game Center identity on your iOS device, you can connect with friends via SharePlay to chat and play together, or quickly match with other players in the game lobby.</li>
+
+      <li class="i18n zh"><b>是否會顯示廣告？</b> 是，為維護服務，我們使用廣告支援 App 的免費提供。</li>
+      <li class="i18n en"><b>Will the app show ads?</b> Yes. To keep the service sustainable, we use ads to support offering the app for free.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="inbetween-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'inbetween_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'InBetween Support' : '射龍門 InBetween 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initialize language from storage or browser preference
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
