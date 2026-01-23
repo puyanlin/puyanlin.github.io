@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>惜干王國貼圖系列 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+    li.i18n.zh, li.i18n.en{display:none}
+    html[lang="zh-Hant"] li.i18n.zh{display:list-item}
+    html[lang="en"] li.i18n.en{display:list-item}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">惜干王國貼圖系列 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">Dino Kingdom Stickers <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">適用範圍</span>
+      <span class="i18n en">Scope</span>
+    </h2>
+    <p class="i18n zh">本支援頁面適用於惜干王國貼圖系列下的所有 iMessage 貼圖包：</p>
+    <p class="i18n en">This support page applies to all iMessage sticker packs in the Dino Kingdom Stickers series:</p>
+    <ul>
+      <li class="i18n zh">惜干王國－Dino 早晨日常</li>
+      <li class="i18n en">Dino Kingdom – Dino Morning Routine</li>
+      <li class="i18n zh">（及未來發行的其他貼圖包）</li>
+      <li class="i18n en">(and other sticker packs released in the future)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們 Contact</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用惜干王國貼圖系列！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using Dino Kingdom Stickers! If you need help, want to report an issue, or share feedback, please email us:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>如何使用貼圖？</b> 在 iMessage 對話中，點擊輸入框旁的 App 圖示，選擇貼圖包，然後點選或拖曳貼圖即可傳送。</li>
+      <li class="i18n en"><b>How to use stickers?</b> In an iMessage conversation, tap the App icon next to the text field, select the sticker pack, then tap or drag a sticker to send it.</li>
+
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。本 App 不建立帳號，也不需要任何登入或註冊。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. This app does not create accounts and requires no sign-in or registration.</li>
+
+      <li class="i18n zh"><b>會收集我的資料嗎？</b> 不會。這是純本地運作的貼圖包，不連接網路，不收集、儲存或傳輸任何個人資料。</li>
+      <li class="i18n en"><b>Does it collect my data?</b> No. This is a purely local sticker pack that does not connect to the internet and does not collect, store, or transmit any personal data.</li>
+
+      <li class="i18n zh"><b>可以退費嗎？</b> 所有購買與退款由 Apple 處理。如需申請退款，請前往 <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>。</li>
+      <li class="i18n en"><b>Can I get a refund?</b> All purchases and refunds are handled by Apple. To request a refund, please visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="stickers-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'stickers_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Dino Kingdom Stickers Support' : '惜干王國貼圖系列 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initialize language from storage or browser preference
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
