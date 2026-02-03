@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>壞壞貼紙 / Bad Guy Badge 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">壞壞貼紙 / Bad Guy Badge 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">Bad Guy Badge <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們 Contact</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用《壞壞貼紙》！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using Bad Guy Badge! If you need help, want to report an issue, or share feedback, please email us:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。本 App 不另建帳號或要求登入，所有資料僅存於您的裝置。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. This app does not create accounts or require login; all data stays on your device.</li>
+
+      <li class="i18n zh"><b>資料存在哪裡？</b> 徽章與獎懲記錄儲存在您 iPhone 或 Apple Watch 的本機（SwiftData），僅在您自己的裝置間同步，開發者無法存取。</li>
+      <li class="i18n en"><b>Where is my data stored?</b> Badge and reward/punishment records are stored locally on your iPhone or Apple Watch (SwiftData), and sync only between your own devices; the developer cannot access them.</li>
+
+      <li class="i18n zh"><b>是否會顯示廣告？</b> 是。為維持免費提供，我們使用廣告；您可透過應用程式內購買移除廣告。</li>
+      <li class="i18n en"><b>Will the app show ads?</b> Yes. To keep the app free, we show ads; you can remove them via an in-app purchase.</li>
+
+      <li class="i18n zh"><b>Apple Watch 可以做什麼？</b> 您可在 Watch 上查看徽章與記錄。若購買「解鎖 Watch 編輯功能」，即可在 Watch 上新增或編輯好表現／壞表現與徽章。</li>
+      <li class="i18n en"><b>What can I do on Apple Watch?</b> You can view badges and records on the Watch. If you purchase "Unlock Watch editing", you can add or edit good/bad behavior and badges on the Watch.</li>
+
+      <li class="i18n zh"><b>應用程式內購買有哪些？</b> 包含「去除廣告」以及「解鎖 Apple Watch 編輯功能」等，可在 App 內商店查看與購買。</li>
+      <li class="i18n en"><b>What in-app purchases are available?</b> These include "Remove ads" and "Unlock Apple Watch editing", among others; you can view and purchase them in the in-app store.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="bad-guy-badge-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'bad_guy_badge_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Bad Guy Badge Support' : '壞壞貼紙 / Bad Guy Badge 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initialize language from storage or browser preference
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
