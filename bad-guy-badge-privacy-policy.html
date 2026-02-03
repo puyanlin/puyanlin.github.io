@@ -3,27 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
   <title>壞壞貼紙 / Bad Guy Badge – 隱私權政策 Privacy Policy</title>
   <style>
-    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--code:#f0f3f6}
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--code:#f0f3f6;--border:#e5e7eb}
     @media (prefers-color-scheme: dark){
-      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--code:#10161d}
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--code:#10161d;--border:#223}
     }
     html,body{background:var(--bg);color:var(--fg)}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
     h1,h2,h3{line-height:1.25;margin:0.6em 0 0.3em}
-    .muted{color:var(--muted)}
+    .muted{color:var(--muted);font-weight:normal}
     .lang{background:var(--card);padding:16px 18px;border-radius:14px;margin:20px 0}
     code{background:var(--code);padding:2px 6px;border-radius:6px}
     a{color:inherit}
-    hr{border:0;border-top:1px solid var(--card);margin:32px 0}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+    /* inline i18n for spans */
+    html[lang="zh-Hant"] span.i18n.zh{display:inline}
+    html[lang="en"] span.i18n.en{display:inline}
   </style>
 </head>
 <body>
-  <h1>壞壞貼紙 / Bad Guy Badge – 隱私權政策 <span class="muted">Privacy Policy</span></h1>
-  <p class="muted">最後更新 Last Updated: 2025-Feb-03</p>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
 
-  <div class="lang" id="zh">
+  <h1>
+    <span class="i18n zh">壞壞貼紙 / Bad Guy Badge – 隱私權政策 <span class="muted">Privacy Policy</span></span>
+    <span class="i18n en">Bad Guy Badge <span class="muted">Privacy Policy</span></span>
+  </h1>
+  <p class="muted">
+    <span class="i18n zh">最後更新 Last Updated: 2025-Feb-03</span>
+    <span class="i18n en">Last Updated: 2025-Feb-03</span>
+  </p>
+
+  <div class="lang i18n zh">
     <h2>中文版</h2>
     <p>「壞壞貼紙」（Bad Guy Badge）重視您的隱私。本政策說明我們如何處理資料。</p>
 
@@ -62,15 +86,13 @@
     <p>若對本政策有疑問，請來信：<a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
   </div>
 
-  <hr />
-
-  <div class="lang" id="en">
+  <div class="lang i18n en">
     <h2>English</h2>
     <p>Bad Guy Badge ("the App") values your privacy. This policy explains how your data is handled.</p>
 
     <h3>Data we collect/use</h3>
     <ul>
-      <li><b>On-Device Storage (SwiftData)</b>: Badge records, good/bad behavior entries, and reward/punishment settings are stored on your iPhone or Apple Watch. <u>Data stays on your device only; the developer cannot access it.</u> If you use Apple Watch and enable sync, data is synced between your own devices via Apple’s mechanisms.</li>
+      <li><b>On-Device Storage (SwiftData)</b>: Badge records, good/bad behavior entries, and reward/punishment settings are stored on your iPhone or Apple Watch. <u>Data stays on your device only; the developer cannot access it.</u> If you use Apple Watch and enable sync, data is synced between your own devices via Apple's mechanisms.</li>
       <li><b>Ads (Google Mobile Ads / AdMob)</b>: To keep the App free, we serve ads. The provider may collect device info (e.g. IDFA) for delivery, measurement, and fraud prevention. We request App Tracking Transparency (ATT) as required by Apple; you can manage tracking in iOS Settings → Privacy & Security → Tracking, or reset the advertising identifier.</li>
     </ul>
 
@@ -102,5 +124,35 @@
     <h3>Contact</h3>
     <p>Questions? <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
   </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'bad_guy_badge_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Bad Guy Badge – Privacy Policy' : '壞壞貼紙 / Bad Guy Badge – 隱私權政策 Privacy Policy';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initialize language from storage or browser preference
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
 </body>
 </html>
