@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>Fork 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+    li.i18n{display:none}
+    html[lang="zh-Hant"] li.i18n.zh{display:list-item}
+    html[lang="en"] li.i18n.en{display:list-item}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">Fork 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">Fork <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用 Fork！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using Fork! If you need help, want to report an issue, or share feedback, please email:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。App 不需要任何帳號或登入，直接開始建立賽程。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. The app requires no account or sign-in — just open and start creating tournaments.</li>
+
+      <li class="i18n zh"><b>免費版有什麼限制？</b> 免費版最多可建立 2 個賽程。觀看獎勵廣告可額外解鎖賽程名額，或購買「永久移除廣告」方案解鎖無限賽程。</li>
+      <li class="i18n en"><b>What are the free tier limits?</b> Free users can create up to 2 tournaments. Watch a rewarded ad to unlock extra slots, or purchase the "Remove Ads" upgrade for unlimited tournaments.</li>
+
+      <li class="i18n zh"><b>如何移除廣告？</b> 在「設定」中購買「永久移除廣告」方案（App 內購買），即可永久關閉所有廣告並解鎖無限賽程。</li>
+      <li class="i18n en"><b>How do I remove ads?</b> Purchase "Remove Ads" in Settings (in-app purchase) to permanently disable all ads and unlock unlimited tournaments.</li>
+
+      <li class="i18n zh"><b>如何還原購買？</b> 前往「設定 ▸ Premium」，點擊「還原購買」，使用相同 Apple ID 登入後即可恢復已購買的方案。</li>
+      <li class="i18n en"><b>How do I restore my purchase?</b> Go to Settings ▸ Premium and tap "Restore Purchases." Sign in with the same Apple ID used for the original purchase.</li>
+
+      <li class="i18n zh"><b>資料會備份到雲端嗎？</b> 不會。所有賽程資料僅儲存在您的裝置上，刪除 App 後資料將一併移除。</li>
+      <li class="i18n en"><b>Is my data backed up to the cloud?</b> No. All tournament data is stored only on your device. Deleting the app removes all data.</li>
+
+      <li class="i18n zh"><b>可以匯出賽程圖片嗎？</b> 可以。在賽程頁面點擊分享按鈕，即可將對戰表匯出為圖片並儲存至相簿或分享。首次使用需授權相簿存取權限。</li>
+      <li class="i18n en"><b>Can I export the bracket as an image?</b> Yes. Tap the share button on the bracket view to export the bracket as an image. You'll be prompted for photo library access the first time.</li>
+
+      <li class="i18n zh"><b>支援 Apple TV（tvOS）嗎？</b> 支援。tvOS 版本提供完整的賽程瀏覽體驗，不顯示廣告。</li>
+      <li class="i18n en"><b>Is Apple TV (tvOS) supported?</b> Yes. The tvOS version offers a full bracket viewing experience with no ads.</li>
+
+      <li class="i18n zh"><b>App 會追蹤我嗎？</b> iOS 首次啟動時會詢問追蹤授權（ATT）。若您拒絕，廣告將改為非個人化廣告，App 功能完全不受影響。tvOS 不進行追蹤。</li>
+      <li class="i18n en"><b>Does the app track me?</b> On iOS, the app asks for App Tracking Transparency (ATT) authorization on first launch. If you decline, ads switch to non-personalized; app functionality is unaffected. tvOS does not track.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="matchschedule-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'fork_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Fork Support' : 'Fork 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
