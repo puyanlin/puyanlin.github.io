@@ -3,120 +3,175 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
   <title>Fork – 隱私權政策 Privacy Policy</title>
   <style>
-    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--code:#f0f3f6}
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
     @media (prefers-color-scheme: dark){
-      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--code:#10161d}
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
     }
     html,body{background:var(--bg);color:var(--fg)}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
     h1,h2,h3{line-height:1.25;margin:0.6em 0 0.3em}
-    .muted{color:var(--muted)}
-    .lang{background:var(--card);padding:16px 18px;border-radius:14px;margin:20px 0}
-    code{background:var(--code);padding:2px 6px;border-radius:6px}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
     a{color:inherit}
-    hr{border:0;border-top:1px solid var(--card);margin:32px 0}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+    li.i18n{display:none}
+    html[lang="zh-Hant"] li.i18n.zh{display:list-item}
+    html[lang="en"] li.i18n.en{display:list-item}
   </style>
 </head>
 <body>
-  <h1>Fork – 隱私權政策 <span class="muted">Privacy Policy</span></h1>
-  <p class="muted">最後更新 Last Updated: 2026-Apr-15</p>
-
-  <div class="lang" id="zh">
-    <h2>中文版</h2>
-    <p>「Fork」重視您的隱私。本政策說明 App 如何處理您的資料。</p>
-
-    <h3>資料儲存</h3>
-    <p>所有賽程資料（隊伍名稱、比分、主題設定、封面圖片等）僅儲存於您的裝置本機，不會上傳至開發者或任何第三方伺服器。</p>
-
-    <h3>我們收集或使用的資料</h3>
-    <ul>
-      <li>
-        <b>廣告（Google Mobile Ads / AdMob）— 僅限 iOS</b>：為提供免費服務，iOS 版本展示橫幅、插頁式及獎勵廣告。廣告供應商可能蒐集裝置資訊（如廣告識別碼 IDFA、裝置型號、IP 位址）以投遞廣告、衡量成效及防止廣告詐欺。您可在 iOS【設定 ▸ 隱私權與安全性 ▸ 追蹤】管理追蹤許可，或重設廣告識別碼。tvOS 版本不顯示廣告。
-      </li>
-      <li>
-        <b>App 追蹤透明度（ATT）— 僅限 iOS</b>：App 首次啟動時會請求追蹤授權。若您拒絕，廣告商將自動改為非個人化廣告；App 功能不受影響。
-      </li>
-      <li>
-        <b>App 內購買（IAP）</b>：透過 Apple App Store 購買「永久移除廣告」方案時，付款與交易記錄由 Apple 全權處理，開發者無法存取您的付款資訊。
-      </li>
-      <li>
-        <b>照片圖庫</b>：匯出賽程圖片時，App 會請求相簿寫入權限，僅用於將圖片儲存至您的裝置。
-      </li>
-    </ul>
-
-    <h3>我們不會</h3>
-    <ul>
-      <li>建立帳號或要求登入。</li>
-      <li>將賽程資料、照片或個人資訊上傳至任何伺服器。</li>
-      <li>發送推播通知。</li>
-      <li>在 tvOS 上展示廣告或請求追蹤授權。</li>
-    </ul>
-
-    <h3>資料保留與安全</h3>
-    <ul>
-      <li>所有本機資料（賽程、圖片、主題）隨 App 刪除一併移除。</li>
-      <li>廣告 SDK 的資料傳輸與安全由 Google 提供；IAP 交易安全由 Apple 提供。</li>
-    </ul>
-
-    <h3>第三方服務</h3>
-    <ul>
-      <li>Google Mobile Ads SDK（廣告投放與衡量，僅 iOS）</li>
-      <li>Apple StoreKit / App Store（App 內購買）</li>
-    </ul>
-
-    <h3>聯絡我們</h3>
-    <p>若對本政策有疑問，請來信：<a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
   </div>
 
-  <hr />
+  <h1>
+    <span class="i18n zh">Fork – 隱私權政策 <span class="muted">Privacy Policy</span></span>
+    <span class="i18n en">Fork – <span class="muted">Privacy Policy</span></span>
+  </h1>
+  <p class="muted">最後更新 Last Updated: 2026-Apr-15</p>
 
-  <div class="lang" id="en">
-    <h2>English</h2>
-    <p>Fork values your privacy. This policy explains how your data is handled.</p>
+  <div class="card">
+    <h2>
+      <span class="i18n zh">資料儲存</span>
+      <span class="i18n en">Data Storage</span>
+    </h2>
+    <p class="i18n zh">所有賽程資料（隊伍名稱、比分、主題設定、封面圖片等）僅儲存於您的裝置本機，不會上傳至開發者或任何第三方伺服器。</p>
+    <p class="i18n en">All tournament data (team names, scores, theme settings, cover images, etc.) is stored locally on your device only. Nothing is uploaded to developer or third-party servers.</p>
+  </div>
 
-    <h3>Data Storage</h3>
-    <p>All tournament data (team names, scores, theme settings, cover images, etc.) is stored locally on your device only. Nothing is uploaded to developer or third-party servers.</p>
-
-    <h3>Data we collect / use</h3>
+  <div class="card">
+    <h2>
+      <span class="i18n zh">我們收集或使用的資料</span>
+      <span class="i18n en">Data we collect / use</span>
+    </h2>
     <ul>
-      <li>
+      <li class="i18n zh">
+        <b>廣告（Google Mobile Ads / AdMob）— 僅限 iOS</b>：為提供免費服務，iOS 版本展示橫幅、插頁式及獎勵廣告。廣告供應商可能蒐集裝置資訊（如廣告識別碼 IDFA、裝置型號、IP 位址）以投遞廣告、衡量成效及防止廣告詐欺。您可在 iOS【設定 ▸ 隱私權與安全性 ▸ 追蹤】管理追蹤許可，或重設廣告識別碼。tvOS 版本不顯示廣告。
+      </li>
+      <li class="i18n en">
         <b>Ads (Google Mobile Ads / AdMob) — iOS only</b>: To keep the app free, the iOS version shows banner, interstitial, and rewarded ads. The ad provider may collect device info (advertising identifier IDFA, device model, IP address) for ad delivery, measurement, and fraud prevention. You can manage App Tracking Transparency in iOS Settings ▸ Privacy &amp; Security ▸ Tracking, or reset your advertising identifier. The tvOS version shows no ads.
       </li>
-      <li>
+
+      <li class="i18n zh">
+        <b>App 追蹤透明度（ATT）— 僅限 iOS</b>：App 首次啟動時會請求追蹤授權。若您拒絕，廣告商將自動改為非個人化廣告；App 功能不受影響。
+      </li>
+      <li class="i18n en">
         <b>App Tracking Transparency (ATT) — iOS only</b>: On first launch, the app requests tracking authorization. If you decline, the ad provider automatically switches to non-personalized ads; app functionality is unaffected.
       </li>
-      <li>
+
+      <li class="i18n zh">
+        <b>App 內購買（IAP）</b>：透過 Apple App Store 購買「永久移除廣告」方案時，付款與交易記錄由 Apple 全權處理，開發者無法存取您的付款資訊。
+      </li>
+      <li class="i18n en">
         <b>In-App Purchases (IAP)</b>: When purchasing the "Remove Ads" upgrade through the Apple App Store, payment and transaction records are handled entirely by Apple. The developer cannot access your payment information.
       </li>
-      <li>
+
+      <li class="i18n zh">
+        <b>照片圖庫</b>：匯出賽程圖片時，App 會請求相簿寫入權限，僅用於將圖片儲存至您的裝置。
+      </li>
+      <li class="i18n en">
         <b>Photo Library</b>: When exporting bracket images, the app requests photo library write access solely to save the image to your device.
       </li>
     </ul>
-
-    <h3>We do not</h3>
-    <ul>
-      <li>Create accounts or require sign-in.</li>
-      <li>Upload tournament data, photos, or personal information to any server.</li>
-      <li>Send push notifications.</li>
-      <li>Show ads or request tracking authorization on tvOS.</li>
-    </ul>
-
-    <h3>Retention &amp; Security</h3>
-    <ul>
-      <li>All local data (tournaments, images, themes) is removed when you delete the app.</li>
-      <li>Ad SDK data transmission and security are provided by Google; IAP transaction security is provided by Apple.</li>
-    </ul>
-
-    <h3>Third-Party Services</h3>
-    <ul>
-      <li>Google Mobile Ads SDK (ad delivery &amp; measurement, iOS only)</li>
-      <li>Apple StoreKit / App Store (in-app purchases)</li>
-    </ul>
-
-    <h3>Contact</h3>
-    <p>Questions? <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
   </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">我們不會</span>
+      <span class="i18n en">We do not</span>
+    </h2>
+    <ul>
+      <li class="i18n zh">建立帳號或要求登入。</li>
+      <li class="i18n en">Create accounts or require sign-in.</li>
+
+      <li class="i18n zh">將賽程資料、照片或個人資訊上傳至任何伺服器。</li>
+      <li class="i18n en">Upload tournament data, photos, or personal information to any server.</li>
+
+      <li class="i18n zh">發送推播通知。</li>
+      <li class="i18n en">Send push notifications.</li>
+
+      <li class="i18n zh">在 tvOS 上展示廣告或請求追蹤授權。</li>
+      <li class="i18n en">Show ads or request tracking authorization on tvOS.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">資料保留與安全</span>
+      <span class="i18n en">Retention &amp; Security</span>
+    </h2>
+    <ul>
+      <li class="i18n zh">所有本機資料（賽程、圖片、主題）隨 App 刪除一併移除。</li>
+      <li class="i18n en">All local data (tournaments, images, themes) is removed when you delete the app.</li>
+
+      <li class="i18n zh">廣告 SDK 的資料傳輸與安全由 Google 提供；IAP 交易安全由 Apple 提供。</li>
+      <li class="i18n en">Ad SDK data transmission and security are provided by Google; IAP transaction security is provided by Apple.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">第三方服務</span>
+      <span class="i18n en">Third-Party Services</span>
+    </h2>
+    <ul>
+      <li class="i18n zh">Google Mobile Ads SDK（廣告投放與衡量，僅 iOS）</li>
+      <li class="i18n en">Google Mobile Ads SDK (ad delivery &amp; measurement, iOS only)</li>
+
+      <li class="i18n zh">Apple StoreKit / App Store（App 內購買）</li>
+      <li class="i18n en">Apple StoreKit / App Store (in-app purchases)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">若對本政策有疑問，請來信：<a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+    <p class="i18n en">Questions? <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'fork_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Fork – Privacy Policy' : 'Fork – 隱私權政策 Privacy Policy';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
 </body>
 </html>
