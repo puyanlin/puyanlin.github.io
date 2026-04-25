@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>陀螺對戰相機 / Top Match Camera 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">陀螺對戰相機 / Top Match Camera 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">Top Match Camera <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們 Contact</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用《陀螺對戰相機》！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using Top Match Camera! If you need help, want to report an issue, or share feedback, please email us:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。本 App 不建立帳號，所有資料都存在您的裝置上。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. The app does not create accounts; all data is kept on your device.</li>
+
+      <li class="i18n zh"><b>陀螺軌跡是怎麼產生的？</b> App 使用 Apple Vision、AVFoundation 與 Core Image 在您的裝置本地分析影片、產生粒子軌跡，<u>不會將影片上傳到網路</u>。</li>
+      <li class="i18n en"><b>How are the trails generated?</b> The app uses Apple Vision, AVFoundation, and Core Image to analyse the clip and generate particle trails entirely on your device. <u>Videos are never uploaded.</u></li>
+
+      <li class="i18n zh"><b>處理完的影片儲存在哪裡？</b> 訂閱用戶的影片會存到 App 內的「對戰回顧」與「照片」相簿（預設名稱「陀螺對戰相機」）。未訂閱用戶生成的影片在離開結果頁時會被丟棄。</li>
+      <li class="i18n en"><b>Where are processed clips stored?</b> For Pro subscribers, generated clips land in the in-app "Battle Review" archive and your Photos album ("陀螺對戰相機" by default). For non-subscribers, the clip is discarded once you leave the result screen.</li>
+
+      <li class="i18n zh"><b>Top Match Pro 訂閱是什麼？</b> 解鎖儲存對戰、Photos 相簿同步、無限生成、搶先體驗新特效包。提供月訂與年訂兩種方案，新訂閱者享 7 天免費試用。</li>
+      <li class="i18n en"><b>What is Top Match Pro?</b> Pro unlocks saving battles, Photos album sync, unlimited renders, and early access to new effect packs. Monthly and yearly plans are available, with a 7-day free trial for new subscribers.</li>
+
+      <li class="i18n zh"><b>如何取消訂閱？</b> 請至 iOS【設定 ▸ Apple ID ▸ 訂閱項目】管理或取消。免費試用結束前 24 小時取消即不會收費。</li>
+      <li class="i18n en"><b>How do I cancel my subscription?</b> Open iOS Settings ▸ Apple ID ▸ Subscriptions. Cancelling at least 24 hours before the trial ends means you won't be charged.</li>
+
+      <li class="i18n zh"><b>還原購買在哪裡？</b> 設定頁的訂閱區塊或訂閱頁右上角點「還原購買」即可。請確認使用同一組 Apple ID。</li>
+      <li class="i18n en"><b>How do I restore a purchase?</b> Tap "Restore" in the subscription section of Settings or in the top-right of the subscription sheet. Make sure you're signed in with the same Apple ID.</li>
+
+      <li class="i18n zh"><b>App 需要哪些權限？</b> 相機（錄製對戰）、麥克風（錄音）、照片（讀取選取的影片並寫回相簿）。可在 iOS【設定 ▸ 隱私權與安全性】管理。</li>
+      <li class="i18n en"><b>What permissions does the app need?</b> Camera (record battles), microphone (audio capture), and Photos (read selected videos / save processed clips). Manage them under iOS Settings ▸ Privacy &amp; Security.</li>
+
+      <li class="i18n zh"><b>影片處理很慢？</b> 影片越長處理越久。可至設定頁將輸出解析度調為 720p 以加快速度，請在處理中保持 App 開啟。</li>
+      <li class="i18n en"><b>Processing takes too long?</b> Longer clips take longer. Lower the output resolution to 720p in Settings to speed things up, and keep the app open while it renders.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="top-match-camera-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'topmatchcamera_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Top Match Camera Support' : '陀螺對戰相機 / Top Match Camera 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
