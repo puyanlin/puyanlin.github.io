@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["S6LR7F4F24.tw.puyan.TopMatchCamera"],
+        "components": [
+          {
+            "/": "/TopMatchCamera/",
+            "comment": "Bare landing page — opens the app to home."
+          },
+          {
+            "/": "/TopMatchCamera/promo*",
+            "comment": "Marketing promo deeplink — opens app and presents paywall."
+          },
+          {
+            "/": "/TopMatchCamera/redeem*",
+            "comment": "Redeem deeplink — opens app and triggers offer-code sheet."
+          }
+        ]
+      }
+    ]
+  }
+}
