@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>陀螺對戰相機 — TopMatchCamera</title>
+<meta name="description" content="把每場陀螺對戰錄成有特效、有 SP 的回放影片。">
+<meta name="theme-color" content="#000000">
+<!--
+  The Apple Smart App Banner gives Safari users a one-tap path to the
+  App Store / open the app if installed. The numeric `app-id` must
+  match the live App Store ID — placeholder until ASC assigns one.
+-->
+<meta name="apple-itunes-app" content="app-id=6763710356">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+  :root {
+    --accent: #c7ff21;
+    --accent-deep: #8ed10f;
+    --player-right: #ffc722;
+    --bg: #000;
+    --bg-deep: #0d1908;
+    --text: #fff;
+    --text-dim: rgba(255, 255, 255, 0.65);
+    --card: rgba(255, 255, 255, 0.06);
+    --card-stroke: rgba(255, 255, 255, 0.12);
+    --radius: 22px;
+    --max-width: 1100px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC",
+                 "Noto Sans TC", "Microsoft JhengHei", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+  body { padding: 0 0 80px; }
+  a { color: inherit; }
+  img, video { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero ---------------------------------------------------------- */
+  .hero {
+    padding: 72px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: -40% 0 auto 0;
+    height: 80%;
+    background: radial-gradient(ellipse at top, rgba(199, 255, 33, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(199, 255, 33, 0.12);
+    border: 1px solid rgba(199, 255, 33, 0.45);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero p {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text-dim);
+    max-width: 560px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+    color: #000;
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    border-color: var(--card-stroke);
+    backdrop-filter: blur(12px);
+  }
+  .promo-banner {
+    display: none;
+    margin: 20px auto 0;
+    max-width: 480px;
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    background: rgba(199, 255, 33, 0.08);
+    border: 1px solid rgba(199, 255, 33, 0.4);
+    color: var(--accent);
+    font-size: 14px;
+  }
+  .promo-banner.active { display: block; }
+  .promo-banner b { color: var(--text); font-weight: 700; }
+
+  /* Section -------------------------------------------------------- */
+  section { padding: 56px 0; }
+  .section-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .section-head h2 {
+    font-size: clamp(26px, 3.5vw, 36px);
+    margin: 0 0 12px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .section-head p {
+    color: var(--text-dim);
+    margin: 0;
+    font-size: 15px;
+  }
+
+  /* Video grid ----------------------------------------------------- */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .video-card {
+    background: var(--card);
+    border: 1px solid var(--card-stroke);
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    position: relative;
+  }
+  .video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-card .label {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 14px 16px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .video-card .label .num {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin-right: 6px;
+  }
+
+  /* Tutorial ------------------------------------------------------- */
+  .tutorial {
+    background: rgba(199, 255, 33, 0.03);
+    border-top: 1px solid rgba(199, 255, 33, 0.1);
+    border-bottom: 1px solid rgba(199, 255, 33, 0.1);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .step {
+    background: var(--card);
+    border: 1px solid var(--card-stroke);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .step .video-wrap {
+    aspect-ratio: 9 / 16;
+    background: #000;
+  }
+  .step .video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .step .body {
+    padding: 18px 20px;
+  }
+  .step h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .step h3 .num {
+    color: var(--accent);
+    margin-right: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .step p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* Final CTA ------------------------------------------------------ */
+  .final-cta {
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0 0 14px;
+    font-weight: 800;
+  }
+  .final-cta p {
+    color: var(--text-dim);
+    margin: 0 0 28px;
+    font-size: 15px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .app-store-badge {
+    display: inline-block;
+    height: 52px;
+  }
+
+  /* Footer --------------------------------------------------------- */
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    padding: 24px;
+    border-top: 1px solid var(--card-stroke);
+  }
+  footer a { color: var(--text-dim); text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 480px) {
+    .hero { padding: 48px 24px 40px; }
+    section { padding: 44px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">陀螺對戰相機</span>
+    <h1>每一場對戰<br>都值得一段 <span class="accent">回放</span></h1>
+    <p>錄下對戰、套上 BeyTrails 特效與 SP 數值，幾秒就生出能直接分享的精華影片。</p>
+    <div class="cta-row" id="installRow">
+      <a class="btn btn-primary" id="appStoreBtn"
+         href="https://apps.apple.com/tw/app/id6763710356"
+         data-store="ios">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 12.65c-.024-2.65 2.165-3.92 2.264-3.984-1.234-1.804-3.157-2.05-3.84-2.08-1.633-.165-3.187.961-4.018.961-.83 0-2.117-.937-3.479-.91-1.79.026-3.44 1.04-4.359 2.64-1.857 3.222-.475 7.998 1.337 10.62.886 1.282 1.94 2.72 3.323 2.668 1.336-.054 1.84-.864 3.452-.864 1.612 0 2.066.864 3.479.835 1.434-.026 2.342-1.305 3.222-2.594 1.014-1.49 1.434-2.93 1.46-3.005-.032-.013-2.81-1.078-2.84-4.287zM14.948 4.78c.737-.893 1.236-2.131 1.099-3.366-1.063.044-2.348.708-3.111 1.6-.682.788-1.281 2.05-1.121 3.262 1.183.092 2.395-.604 3.133-1.496z"/></svg>
+        App Store
+      </a>
+      <a class="btn btn-primary" id="playStoreBtn"
+         href="https://play.google.com/store/apps/details?id=tw.puyan.topmatchcamers"
+         data-store="android">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.997.997 0 01-.61-.92V2.734c0-.408.243-.749.61-.92zM14.91 13.118L17.78 16l-12.28 7.045 9.41-9.927zM17.78 8L14.91 10.882 5.5.955 17.78 8zm3.65 3.13c.4.234.78.74.78 1.37 0 .63-.38 1.13-.78 1.36l-2.8 1.6L15.84 12l2.79-2.46 2.8 1.6z"/></svg>
+        Google Play
+      </a>
+      <a class="btn btn-secondary" href="topmatchcamera://">已安裝？開啟 App</a>
+    </div>
+    <div class="promo-banner" id="promoBanner">
+      🎁 你帶著推廣連結進來，點下方按鈕直接套用 <b>限時優惠兌換碼</b>
+      <div style="margin-top: 12px;">
+        <a class="btn btn-primary" id="redeemBtn"
+           href="https://apps.apple.com/redeem">立即兌換</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>實機成品</h2>
+      <p>下方是 TMC 直接輸出的對戰回放，沒有額外後製。</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <video src="videos/F3059473-04AF-456D-A0DE-A97ADD118BD5.MP4"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <div class="label"><span class="num">01</span>BeyTrails 特效實拍</div>
+      </div>
+      <div class="video-card">
+        <video src="videos/9CA1EBB8-9CBC-4334-913C-9367D9990795.MP4"
+               autoplay muted loop playsinline preload="metadata"></video>
+        <div class="label"><span class="num">02</span>SP 數值回放</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tutorial">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>幾步就上手</h2>
+      <p>不需要剪輯背景，從錄影到匯出全程在 app 內完成。</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="video-wrap">
+          <video src="videos/B1F104C8-99F2-4A65-987C-E3915AB6B6DA.MP4"
+                 autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="body">
+          <h3><span class="num">01</span>錄下對戰</h3>
+          <p>選好雙方選手與 Beysoul，按下錄影。如果你有 Pass 通行證，發射轉速會自動同步進來。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="video-wrap">
+          <video src="videos/4C4D3F84-F402-4AA1-A4FB-3FB2D8001B86.MP4"
+                 autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="body">
+          <h3><span class="num">02</span>套特效、輸出</h3>
+          <p>BeyTrails 特效、勝負徽章、MAX SP 一次套上去，直接存進相簿、傳到 IG / Threads。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>準備好把對戰升級成內容？</h2>
+  <p>免費下載。訂閱搭配 Pass 通行證讀取每一發的真實轉速，再套上 BeyTrails 戰鬥軌跡 — 這才是最帥的對戰回放。</p>
+  <div class="cta-row" style="justify-content: center;">
+    <a href="https://apps.apple.com/tw/app/id6763710356" class="btn btn-primary" style="padding: 16px 28px; font-size: 16px;">App Store</a>
+    <a href="https://play.google.com/store/apps/details?id=tw.puyan.topmatchcamers" class="btn btn-primary" style="padding: 16px 28px; font-size: 16px;">Google Play</a>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year">2026</span> Puyan Lin · TopMatchCamera</div>
+  <div style="margin-top: 8px;">
+    <a href="https://github.com/puyanlin/TopMatchCamera">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  // Auto-update copyright year so the footer doesn't go stale.
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Promo deep-link handling. A partner app can hand us a URL like
+  //   https://puyanlin.github.io/TopMatchCamera/?code=ABCDEF
+  // We surface the redeem banner and rewrite the redeem button to
+  // Apple's hosted offer-code page, which pre-fills the code so the
+  // user doesn't have to re-type it.
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('code');
+    if (!code) return;
+    var banner = document.getElementById('promoBanner');
+    var redeem = document.getElementById('redeemBtn');
+    // App Store ID for tw.puyan.TopMatchCamera. Pre-fills the code in
+    // Apple's hosted redeem page so the partner-app referral lands on a
+    // ready-to-confirm screen.
+    var appId = '6763710356';
+    var url = 'https://apps.apple.com/redeem?ctx=offercodes' +
+              '&id=' + encodeURIComponent(appId) +
+              '&code=' + encodeURIComponent(code);
+    redeem.setAttribute('href', url);
+    banner.classList.add('active');
+  })();
+</script>
+
+</body>
+</html>
