@@ -15,6 +15,10 @@
           {
             "/": "/TopMatchCamera/redeem*",
             "comment": "Redeem deeplink — opens app and triggers offer-code sheet."
+          },
+          {
+            "/": "/TopMatchCamera/import*",
+            "comment": "Share Extension hand-off — query `file` is the App Group inbox filename."
           }
         ]
       }
