@@ -135,6 +135,53 @@
   }
   .promo-banner.active { display: block; }
   .promo-banner b { color: var(--text); font-weight: 700; }
+  /* Partner-attribution row tells the user which app sent them here.
+     Renders an icon + "來自 X" label, links out to the partner's App
+     Store page so they can audit the source before redeeming. */
+  .promo-partner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(199, 255, 33, 0.2);
+    text-align: left;
+  }
+  .promo-partner-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  .promo-partner-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .promo-partner-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .promo-partner-name {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .promo-note {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(199, 255, 33, 0.2);
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.55;
+    text-align: left;
+  }
 
   /* Section -------------------------------------------------------- */
   section { padding: 56px 0; }
@@ -301,12 +348,22 @@
       <a class="btn btn-secondary" href="topmatchcamera://">已安裝？開啟 App</a>
     </div>
     <div class="promo-banner" id="promoBanner">
-      🎁 你從合作 app 帶著 <b>TMC Pro 年訂閱合作優惠</b> 進來 — 點下方按鈕，
-      Apple 會直接幫你帶入兌換碼，確認就套用優惠。
+      <a class="promo-partner" id="promoPartner"
+         href="#" target="_blank" rel="noopener">
+        <img class="promo-partner-icon" id="promoPartnerIcon"
+             src="" alt="" width="48" height="48">
+        <div class="promo-partner-meta">
+          <div class="promo-partner-label">優惠來自</div>
+          <div class="promo-partner-name" id="promoPartnerName"></div>
+        </div>
+      </a>
+      🎁 你的 <b id="promoTitle">TMC Pro 優惠</b> 兌換碼已自動帶入 — 點下方按鈕，
+      到 Apple 兌換頁確認即可套用。
       <div style="margin-top: 12px;">
         <a class="btn btn-primary" id="redeemBtn"
-           href="https://apps.apple.com/redeem">立即兌換年訂閱優惠</a>
+           href="https://apps.apple.com/redeem"><span id="redeemBtnText">立即兌換優惠</span></a>
       </div>
+      <div class="promo-note" id="promoNote"></div>
     </div>
   </div>
 </header>
@@ -383,17 +440,43 @@
   // Auto-update copyright year so the footer doesn't go stale.
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Partner directory — codes prefixed with PARTNER are routed to the
+  // matching entry, which controls the icon + name + App Store link
+  // shown in the attribution row. Add new partners by extending this
+  // table; each partner can issue both YEAR / MONTH codes if desired.
+  // Using PNG (200x200) over the source webp because GitHub Pages
+  // gzips PNG well and Safari < 14 doesn't decode webp at this size.
+  var PARTNERS = {
+    '321goshoot': {
+      name: '321GoShoot',
+      icon: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/dd/26/cf/dd26cfe5-11f3-d9af-2d47-f54e2043ace5/Placeholder.mill/200x200bb.png',
+      url: 'https://apps.apple.com/tw/app/321goshoot/id6762259024'
+    }
+  };
+
   // Promo deep-link handling. A partner app can hand us a URL like
   //   https://puyanlin.github.io/TopMatchCamera/?code=ABCDEF
   // We surface the redeem banner and rewrite the redeem button to
   // Apple's hosted offer-code page, which pre-fills the code so the
   // user doesn't have to re-type it.
+  //
+  // The banner copy and the disclaimer are derived from the code prefix
+  // so each partner code carries the right plan label and the right
+  // regional caveat — yearly is universal, monthly only has a real
+  // discount tier in 5 priority markets.
   (function () {
     var params = new URLSearchParams(window.location.search);
     var code = params.get('code');
     if (!code) return;
     var banner = document.getElementById('promoBanner');
     var redeem = document.getElementById('redeemBtn');
+    var title = document.getElementById('promoTitle');
+    var btnText = document.getElementById('redeemBtnText');
+    var note = document.getElementById('promoNote');
+    var partnerLink = document.getElementById('promoPartner');
+    var partnerIcon = document.getElementById('promoPartnerIcon');
+    var partnerName = document.getElementById('promoPartnerName');
+
     // App Store ID for tw.puyan.TopMatchCamera. Pre-fills the code in
     // Apple's hosted redeem page so the partner-app referral lands on a
     // ready-to-confirm screen.
@@ -402,6 +485,37 @@
               '&id=' + encodeURIComponent(appId) +
               '&code=' + encodeURIComponent(code);
     redeem.setAttribute('href', url);
+
+    var codeUpper = code.toUpperCase();
+
+    // Partner routing. Today every PARTNER* code is from 321GoShoot —
+    // the only collab in flight. When a second partner ships we'll
+    // switch the mapping to a code-prefix lookup (e.g. PXXXX_*) so
+    // each partner gets its own attribution block.
+    var partner = codeUpper.indexOf('PARTNER') === 0
+      ? PARTNERS['321goshoot']
+      : null;
+    if (partner) {
+      partnerIcon.src = partner.icon;
+      partnerIcon.alt = partner.name + ' app icon';
+      partnerName.textContent = partner.name;
+      partnerLink.setAttribute('href', partner.url);
+    } else {
+      partnerLink.style.display = 'none';
+    }
+    if (codeUpper.indexOf('YEAR') !== -1) {
+      title.textContent = 'TMC Pro 年訂閱優惠（5 折）';
+      btnText.textContent = '立即兌換年訂閱優惠';
+      note.textContent = '※ 年訂閱優惠在 175 個國家／地區皆適用。';
+    } else if (codeUpper.indexOf('MONTH') !== -1) {
+      title.textContent = 'TMC Pro 月訂閱優惠（9 折）';
+      btnText.textContent = '立即兌換月訂閱優惠';
+      note.textContent = '※ 月訂閱 9 折優惠目前在美國、英國、台灣、日本、香港 5 個市場有對應折扣 tier；其他地區因 App Store 定價層級限制，兌換時可能會顯示「優惠不適用」，將以原價訂閱。';
+    } else {
+      title.textContent = 'TMC Pro 優惠';
+      btnText.textContent = '立即兌換優惠';
+      note.textContent = '※ 部分地區因 App Store 定價層級限制，兌換時可能顯示「優惠不適用」。';
+    }
     banner.classList.add('active');
   })();
 </script>
