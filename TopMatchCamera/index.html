@@ -488,6 +488,17 @@
 
     var codeUpper = code.toUpperCase();
 
+    // Platform detection. We route Android to the Play redeem URL (with
+    // a different code/offer mechanism), iOS to Apple's offer-code page,
+    // and desktop falls back to the iOS flow because that's where the
+    // year deal lives.
+    var ua = navigator.userAgent || '';
+    var isAndroid = /Android/i.test(ua);
+    var isiOS = /iPad|iPhone|iPod/.test(ua) ||
+                (ua.includes('Macintosh') && navigator.maxTouchPoints > 1);
+    var isYearly = codeUpper.indexOf('YEAR') !== -1;
+    var isMonthly = codeUpper.indexOf('MONTH') !== -1;
+
     // Partner routing. Today every PARTNER* code is from 321GoShoot —
     // the only collab in flight. When a second partner ships we'll
     // switch the mapping to a code-prefix lookup (e.g. PXXXX_*) so
@@ -503,18 +514,53 @@
     } else {
       partnerLink.style.display = 'none';
     }
-    if (codeUpper.indexOf('YEAR') !== -1) {
+
+    // Compose the banner copy. Plan label (year / month) drives the
+    // headline; platform drives the redeem URL, button text, and the
+    // disclaimer (because the underlying mechanism is different on
+    // Play vs Apple, and Play only has the monthly side wired up).
+    if (isYearly) {
       title.textContent = 'TMC Pro 年訂閱優惠（5 折）';
-      btnText.textContent = '立即兌換年訂閱優惠';
-      note.textContent = '※ 年訂閱優惠在 175 個國家／地區皆適用。';
-    } else if (codeUpper.indexOf('MONTH') !== -1) {
-      title.textContent = 'TMC Pro 月訂閱優惠（9 折）';
-      btnText.textContent = '立即兌換月訂閱優惠';
-      note.textContent = '※ 月訂閱 9 折優惠目前在美國、英國、台灣、日本、香港 5 個市場有對應折扣 tier；其他地區因 App Store 定價層級限制，兌換時可能會顯示「優惠不適用」，將以原價訂閱。';
+      if (isAndroid) {
+        // No Play yearly partner offer — point Android user at the
+        // store listing and explain.
+        redeem.setAttribute(
+          'href',
+          'https://play.google.com/store/apps/details?id=tw.puyan.topmatchcamers'
+        );
+        btnText.textContent = '前往 Google Play';
+        note.textContent =
+          '※ 年訂閱合作優惠目前僅在 iOS 提供。Android 可先安裝 TMC，' +
+          '之後我們會視合作狀況補上 Android 年訂優惠。';
+      } else {
+        redeem.setAttribute('href', url); // Apple redeem (set above)
+        btnText.textContent = '立即兌換年訂閱優惠';
+        note.textContent = '※ 年訂閱優惠在 175 個國家／地區皆適用。';
+      }
+    } else if (isMonthly) {
+      title.textContent = 'TMC Pro 月訂閱合作優惠';
+      if (isAndroid) {
+        // Play promo code — give 14 days free, then renew at full
+        // monthly price. URL pre-fills the code in Play's redeem flow.
+        redeem.setAttribute(
+          'href',
+          'https://play.google.com/redeem?code=' + encodeURIComponent(code)
+        );
+        btnText.textContent = '立即兌換 Play 月訂優惠';
+        note.textContent =
+          '※ Android 端透過 Google Play 兌換，前 14 天免費，' +
+          '之後依月訂閱原價自動續訂；隨時可取消。';
+      } else {
+        redeem.setAttribute('href', url); // Apple redeem
+        btnText.textContent = '立即兌換月訂閱優惠';
+        note.textContent =
+          '※ iOS 月訂 9 折優惠目前在美國、英國、台灣、日本、香港 5 個市場有對應折扣 tier；' +
+          '其他地區因 App Store 定價層級限制，兌換時可能顯示「優惠不適用」，將以原價訂閱。';
+      }
     } else {
       title.textContent = 'TMC Pro 優惠';
       btnText.textContent = '立即兌換優惠';
-      note.textContent = '※ 部分地區因 App Store 定價層級限制，兌換時可能顯示「優惠不適用」。';
+      note.textContent = '※ 部分地區因平台定價層級限制，兌換時可能顯示「優惠不適用」。';
     }
     banner.classList.add('active');
   })();
