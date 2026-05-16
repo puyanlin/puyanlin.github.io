@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(rm .git/HEAD.lock)",
+      "Bash(git add *)"
     ],
     "deny": [],
     "ask": []
