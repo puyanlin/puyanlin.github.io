@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "tw.puyan.topmatchcamers",
+      "sha256_cert_fingerprints": [
+        "55:24:C4:0C:D3:0D:A2:C0:3B:8D:98:4F:F5:9D:13:5E:7C:64:47:D6:4D:33:15:CF:33:FF:35:0F:4C:83:7F:D7",
+        "5B:63:EC:39:04:50:FF:AD:95:AC:63:00:10:DE:1F:99:D8:90:4B:1E:56:5D:7C:A4:B8:27:0D:31:9F:63:12:79"
+      ]
+    }
+  }
+]
