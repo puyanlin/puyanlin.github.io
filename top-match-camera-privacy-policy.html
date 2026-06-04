@@ -42,21 +42,23 @@
     <span class="i18n en">Top Match Camera – <span class="muted">Privacy Policy</span></span>
   </h1>
   <p class="muted">
-    <span class="i18n zh">最後更新：2026-04-25</span>
-    <span class="i18n en">Last Updated: 2026-04-25</span>
+    <span class="i18n zh">最後更新：2026-06-05　·　適用於 iOS 與 Android 版本</span>
+    <span class="i18n en">Last Updated: 2026-06-05 · Applies to the iOS and Android apps</span>
   </p>
 
   <div class="i18n zh">
-    <p>「陀螺對戰相機」（Top Match Camera）重視您的隱私。本政策說明我們如何處理資料。</p>
+    <p>「陀螺對戰相機」（Top Match Camera，以下稱「本 App」）重視您的隱私。本政策同時適用於 iOS 版與 Android 版。核心原則：影片擷取與特效處理<b>全部在您的裝置上完成</b>，我們沒有帳號系統，也不會把您的影片或個人內容上傳到開發者的伺服器。</p>
 
     <h3>我們收集或使用的資料</h3>
     <ul>
       <li><b>相機與麥克風</b>：用於錄製陀螺對戰影片。錄製內容僅儲存在您的裝置上，不會上傳到任何伺服器。</li>
-      <li><b>照片圖庫</b>：當您選擇套用特效到既有影片時，App 會讀取您主動挑選的影片；處理完的影片會以您允許的方式存到「照片」相簿（預設名稱「陀螺對戰相機」）。我們不會讀取您未主動選取的內容。</li>
-      <li><b>本地對戰回顧（App Documents）</b>：您生成的對戰影片會存到 App 的本地檔案區（沙盒 Documents 目錄），用來呈現「對戰回顧」清單。資料只存在於您的裝置上，不會上傳。</li>
-      <li><b>玩家暱稱與頭像</b>：您可選填玩家名稱與從相簿挑選頭像，這些資料只儲存在裝置本地的 UserDefaults / 沙盒中。</li>
-      <li><b>影片影像處理</b>：陀螺軌跡偵測完全在裝置本地進行（使用 Apple Vision、AVFoundation、Core Image），<u>不會將影片上傳到網路</u>。</li>
-      <li><b>App Store 訂閱（StoreKit）</b>：Top Match Pro 訂閱由 Apple 透過 StoreKit 處理。我們不接觸您的付款資料，也不會儲存您的 Apple ID。訂閱狀態由 Apple 透過 StoreKit 提供給 App。</li>
+      <li><b>照片 / 影片圖庫</b>：當您選擇套用特效到既有影片時，本 App 只讀取您透過系統相片選擇器（iOS 照片選擇器 / Android Photo Picker）主動挑選的影片；處理完的影片會以您允許的方式存回相簿（預設相簿名稱「陀螺對戰相機」）。我們不會讀取您未主動選取的內容。</li>
+      <li><b>本地對戰回顧與設定</b>：您生成的對戰影片會存到 App 的本地沙盒（iOS App Documents / Android app 專屬儲存空間），用來呈現「對戰回顧」。偏好設定存在本地（iOS UserDefaults / Android DataStore）。這些資料只存在於您的裝置上，不會上傳。</li>
+      <li><b>玩家暱稱與頭像</b>：您可選填玩家名稱、從相簿挑選頭像，這些資料只儲存在裝置本地。</li>
+      <li><b>藍牙（通行證 / Pass 配對）</b>：若您使用「通行證（Pass）」功能，本 App 會透過低功耗藍牙（BLE）連線到相容的陀螺感應裝置以讀取轉速等對戰數據。藍牙僅用於與該硬體互動，<u>不會用來定位您</u>。在 Android API 30 以下系統，系統會把「藍牙掃描」與定位權限綁在一起，因此舊系統上才會出現定位權限；我們以 <code>neverForLocation</code> 標記，且不蒐集、不使用您的位置。</li>
+      <li><b>裝置端影像處理</b>：陀螺軌跡偵測、人像去背、特效合成全部在您的裝置上進行，<u>影片不會上傳到網路</u>。</li>
+      <li><b>訂閱（Top Match Pro）</b>：訂閱由各平台商店處理 —— iOS 透過 Apple StoreKit、Android 透過 Google Play 帳款服務。我們不接觸您的付款資料，也不會儲存您的 Apple ID / Google 帳號；訂閱狀態由商店回報給 App。</li>
+      <li><b>遠端設定（Firebase Remote Config）</b>：本 App 會向 Google 伺服器取得遠端設定內容；此過程會送出一組 App 安裝識別碼與標準請求資訊（含 IP）給 Google，<u>不會傳送您的影片或個人內容</u>，且非分析、非廣告用途。設定內容若含外部連結，點擊後將開啟外部網頁，受該網站自身的隱私權政策規範。</li>
     </ul>
 
     <h3>我們不會</h3>
@@ -64,29 +66,31 @@
       <li>建立帳號或要求登入。</li>
       <li>在未經同意下上傳任何影片或影像；所有影像處理都在裝置本地完成。</li>
       <li>將您的個人內容上傳到開發者自有伺服器。</li>
-      <li>使用第三方分析或廣告 SDK。</li>
+      <li>使用第三方<b>分析</b>或<b>廣告</b> SDK。</li>
+      <li>蒐集或使用您的地理位置，也不會用位置追蹤您。</li>
       <li>讀取您未主動選取的照片或影片。</li>
     </ul>
 
     <h3>訂閱與試用</h3>
     <ul>
-      <li>Top Match Pro 訂閱（月訂或年訂）由 Apple 收費並管理。新訂閱者享 7 天免費試用，試用結束前 24 小時若未取消，會自動轉為付費訂閱。</li>
-      <li>訂閱可隨時於 iOS【設定 ▸ Apple ID ▸ 訂閱項目】管理或取消。</li>
-      <li>取消後，您仍可使用至當前計費週期結束。已收費用不予退款（如需退款請循 Apple 退款流程）。</li>
+      <li>Top Match Pro（月訂或年訂）由 Apple（iOS）或 Google Play（Android）收費並管理。新訂閱者享 7 天免費試用，試用結束前 24 小時若未取消，會自動轉為付費訂閱。</li>
+      <li>訂閱可隨時管理或取消：iOS 於【設定 ▸ Apple ID ▸ 訂閱項目】；Android 於【Google Play ▸ 訂閱項目】。</li>
+      <li>取消後，您仍可使用至當前計費週期結束。退款請依各平台（Apple / Google Play）的退款流程辦理。</li>
     </ul>
 
     <h3>資料保留與安全</h3>
     <ul>
       <li>影片與設定都存於您裝置的本地沙盒，刪除 App 即會一併刪除。</li>
-      <li>「照片」相簿中的影片由 iOS 管理，您可在「照片」App 中刪除。</li>
-      <li>傳輸到「照片」的安全性由 Apple PhotoKit 提供；我們不會另外上傳到第三方伺服器。</li>
+      <li>存到系統相簿的影片由作業系統（iOS 照片 / Android 媒體庫）管理，您可自行刪除。</li>
+      <li>我們不會將您的影片或個人內容上傳到第三方伺服器。</li>
     </ul>
 
     <h3>第三方服務</h3>
+    <p class="muted">僅列出會接收資料的第三方；其餘影像處理皆在裝置端完成，不傳送任何資料。</p>
     <ul>
-      <li>Apple StoreKit（訂閱與購買處理）</li>
-      <li>Apple PhotoKit（讀取 / 寫入「照片」資料庫）</li>
-      <li>Apple AVFoundation / Vision / Core Image（本地影片擷取與處理）</li>
+      <li>Apple StoreKit（iOS 訂閱與購買）</li>
+      <li>Google Play 帳款服務（Android 訂閱與購買）</li>
+      <li>Google Firebase Remote Config（遠端設定） —— 適用 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隱私權政策</a></li>
     </ul>
 
     <h3>兒童隱私</h3>
@@ -97,16 +101,18 @@
   </div>
 
   <div class="i18n en">
-    <p>Top Match Camera ("the App") values your privacy. This policy explains how your data is handled.</p>
+    <p>Top Match Camera ("the App") values your privacy. This policy applies to both the iOS and Android apps. Core principle: video capture and effects processing happen <b>entirely on your device</b>. There is no account system, and we never upload your videos or personal content to developer-run servers.</p>
 
-    <h3>Data we collect/use</h3>
+    <h3>Data we collect or use</h3>
     <ul>
-      <li><b>Camera &amp; Microphone</b>: Used to record spinning top battle clips. Recordings are stored only on your device and are not uploaded to any server.</li>
-      <li><b>Photo Library</b>: When you choose to apply effects to an existing video, the App reads only the clip you explicitly pick; processed clips are saved back to your Photos album (default album: "陀螺對戰相機"). We never access content you did not select.</li>
-      <li><b>In-app Battle Archive</b>: Your generated battle clips are stored in the App's sandboxed Documents directory so the "Battle Review" screen can list them. This data lives only on your device and is never uploaded.</li>
-      <li><b>Player Names &amp; Avatars</b>: Optional player names and avatars (picked from your Photos) are stored locally in UserDefaults / app sandbox.</li>
-      <li><b>On-device Video Processing</b>: Particle / trail detection runs entirely on-device (Apple Vision, AVFoundation, Core Image). <u>Videos are never uploaded to the network.</u></li>
-      <li><b>App Store Subscriptions (StoreKit)</b>: Top Match Pro is billed and managed by Apple via StoreKit. We do not see your payment details or store your Apple ID. Subscription status is reported to the App by StoreKit.</li>
+      <li><b>Camera &amp; Microphone</b>: Used to record spinning-top battle clips. Recordings are stored only on your device and are not uploaded to any server.</li>
+      <li><b>Photos / Video Library</b>: When you choose to apply effects to an existing video, the App reads only the clip you explicitly pick via the system picker (iOS Photos picker / Android Photo Picker); processed clips are saved back to your library (default album: "陀螺對戰相機"). We never access content you did not select.</li>
+      <li><b>On-device Archive &amp; Settings</b>: Your generated battle clips are stored in the App's sandbox (iOS App Documents / Android app-private storage) to power the "Battle Review" screen. Preferences are stored locally (iOS UserDefaults / Android DataStore). This data lives only on your device and is never uploaded.</li>
+      <li><b>Player Names &amp; Avatars</b>: Optional player names and avatars (picked from your library) are stored locally on the device.</li>
+      <li><b>Bluetooth (Pass pairing)</b>: If you use the "Pass" feature, the App connects over Bluetooth Low Energy (BLE) to a compatible spinning-top sensor to read battle data such as spin speed. Bluetooth is used only to talk to that hardware and is <u>never used to locate you</u>. On Android below API 30, the OS historically tied BLE scanning to the location permission, so a location permission appears only on those older systems; we mark it <code>neverForLocation</code> and do not collect or use your location.</li>
+      <li><b>On-device Video Processing</b>: Trail detection, background segmentation, and effects compositing run entirely on your device. <u>Videos are never uploaded to the network.</u></li>
+      <li><b>Subscriptions (Top Match Pro)</b>: Billing is handled by each platform's store — Apple StoreKit on iOS, Google Play Billing on Android. We do not see your payment details and do not store your Apple ID / Google account; subscription status is reported to the App by the store.</li>
+      <li><b>Remote Configuration (Firebase Remote Config)</b>: The App fetches remote configuration content from Google's servers; this sends an app installation identifier and standard request data (including IP) to Google. <u>We do not send your videos or personal content</u>, and it is not used for analytics or advertising. If configuration content includes an external link, tapping it opens an external page governed by that site's own privacy policy.</li>
     </ul>
 
     <h3>We do not</h3>
@@ -114,29 +120,31 @@
       <li>Create accounts or require sign-in.</li>
       <li>Upload videos or imagery without consent; all processing happens on-device.</li>
       <li>Send your personal content to developer-run servers.</li>
-      <li>Use third-party analytics or advertising SDKs.</li>
+      <li>Use third-party <b>analytics</b> or <b>advertising</b> SDKs.</li>
+      <li>Collect or use your location, or use location to track you.</li>
       <li>Read photos or videos you did not explicitly pick.</li>
     </ul>
 
     <h3>Subscriptions &amp; Trial</h3>
     <ul>
-      <li>Top Match Pro (monthly or yearly) is billed and managed by Apple. New subscribers get a 7-day free trial; if not cancelled at least 24 hours before it ends, it automatically converts into a paid subscription.</li>
-      <li>You can manage or cancel at any time under iOS Settings ▸ Apple ID ▸ Subscriptions.</li>
-      <li>After cancelling, you keep access through the end of the current billing period. Refunds for charged amounts must go through Apple's refund flow.</li>
+      <li>Top Match Pro (monthly or yearly) is billed and managed by Apple (iOS) or Google Play (Android). New subscribers get a 7-day free trial; if not cancelled at least 24 hours before it ends, it automatically converts into a paid subscription.</li>
+      <li>Manage or cancel any time: iOS under Settings ▸ Apple ID ▸ Subscriptions; Android under Google Play ▸ Subscriptions.</li>
+      <li>After cancelling, you keep access through the end of the current billing period. Refunds must go through each platform's (Apple / Google Play) refund flow.</li>
     </ul>
 
     <h3>Retention &amp; Security</h3>
     <ul>
       <li>Videos and settings are stored locally in the App sandbox; deleting the App removes them.</li>
-      <li>Videos saved to your Photos album are managed by iOS; remove them from the Photos app whenever you like.</li>
-      <li>Transport to Photos is handled by Apple PhotoKit; we do not upload to other third-party servers.</li>
+      <li>Videos saved to your system library are managed by the OS (iOS Photos / Android media store); remove them whenever you like.</li>
+      <li>We do not upload your videos or personal content to third-party servers.</li>
     </ul>
 
     <h3>Third-Party Services</h3>
+    <p class="muted">Only third parties that receive data are listed; all other image processing happens on-device and transmits nothing.</p>
     <ul>
-      <li>Apple StoreKit (subscription and purchase handling)</li>
-      <li>Apple PhotoKit (reading from / writing to the Photos library)</li>
-      <li>Apple AVFoundation / Vision / Core Image (on-device capture and processing)</li>
+      <li>Apple StoreKit (iOS purchases)</li>
+      <li>Google Play Billing (Android purchases)</li>
+      <li>Google Firebase Remote Config — see the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
     </ul>
 
     <h3>Children's Privacy</h3>
