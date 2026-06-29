@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>租電計算機 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+    li.i18n{display:none}
+    html[lang="zh-Hant"] li.i18n.zh{display:list-item}
+    html[lang="en"] li.i18n.en{display:list-item}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">租電計算機 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">RntEFee <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用「租電計算機」！若您需要協助、回報問題或提供建議，請來信：</p>
+    <p class="i18n en">Thanks for using RntEFee! If you need help, want to report an issue, or share feedback, please email:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>需要登入嗎？</b> 不需要。App 不需要任何帳號或登入，打開就能開始記帳。</li>
+      <li class="i18n en"><b>Do I need to sign in?</b> No. The app requires no account or sign-in — just open and start.</li>
+
+      <li class="i18n zh"><b>怎麼開始？</b> 在「物件」分頁新增一棟房子，設定房間與各房的分電表，定期抄表填入度數；計費期間到了就按「結算」，App 會自動算出每房應繳金額（房內度數＋公用電平均分攤 × 每度單價），並產生每一房的 PDF 帳單。</li>
+      <li class="i18n en"><b>How do I start?</b> In the Properties tab, add a building, set up its rooms and sub-meters, and record meter readings periodically. When the billing period ends, tap "Settle" — the app computes each room's amount (room usage + shared electricity × unit price) and generates a PDF bill per room.</li>
+
+      <li class="i18n zh"><b>資料會同步嗎？放在哪裡？</b> 會。資料透過您自己的 iCloud 在您的裝置之間同步，存放在您個人的 iCloud 帳戶中，開發者看不到，也沒有自家伺服器。</li>
+      <li class="i18n en"><b>Is my data synced? Where is it kept?</b> Yes. Data syncs across your own devices through your personal iCloud and lives in your own iCloud account. The developer cannot see it, and there are no developer servers.</li>
+
+      <li class="i18n zh"><b>如何去除廣告？</b> 在「設定」中購買「去除廣告」（一次性 App 內購買），即可永久移除 App 內的橫幅與蓋板廣告。</li>
+      <li class="i18n en"><b>How do I remove ads?</b> Purchase "Remove Ads" in Settings (a one-time in-app purchase) to permanently remove the banner and interstitial ads in the app.</li>
+
+      <li class="i18n zh"><b>如何還原購買？</b> 前往「設定」，點擊「回復購買」，使用原先購買時的同一組 Apple ID 即可恢復「去除廣告」。</li>
+      <li class="i18n en"><b>How do I restore my purchase?</b> Go to Settings and tap "Restore Purchases," using the same Apple ID as the original purchase to restore "Remove Ads."</li>
+
+      <li class="i18n zh"><b>可以多人一起記帳嗎？</b> 可以。到「設定 ▸ 匯出整份資料」把資料（含照片）打包成一個 .rntefee 檔，傳給對方；對方點開即可合併匯入，適合輪流記帳。</li>
+      <li class="i18n en"><b>Can multiple people share the bookkeeping?</b> Yes. Use Settings ▸ Export All Data to pack everything (including photos) into a single .rntefee file and share it; the recipient opens it to merge-import. Great for taking turns.</li>
+
+      <li class="i18n zh"><b>電表照片存在哪裡？</b> 存在您的裝置與您自己的 iCloud，不會上傳到開發者伺服器。</li>
+      <li class="i18n en"><b>Where are meter photos stored?</b> On your device and in your own iCloud — never uploaded to developer servers.</li>
+
+      <li class="i18n zh"><b>會提醒我結算嗎？</b> 會。可在各物件的「物件設定」開啟「每月結算日提醒」，這是您裝置上的本機通知。</li>
+      <li class="i18n en"><b>Will it remind me to settle?</b> Yes. Enable the monthly settlement-day reminder in each property's settings — it's a local notification on your device.</li>
+
+      <li class="i18n zh"><b>App 會追蹤我嗎？</b> 首次啟動時會詢問追蹤授權（ATT）。若您拒絕，廣告將改為非個人化廣告，App 功能完全不受影響。</li>
+      <li class="i18n en"><b>Does the app track me?</b> On first launch, the app asks for App Tracking Transparency (ATT). If you decline, ads switch to non-personalized; app functionality is unaffected.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="rntefee-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'rntefee_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'RntEFee Support' : '租電計算機 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
