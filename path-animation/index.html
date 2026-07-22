@@ -113,13 +113,18 @@ const paths = { p1:$("p1"), p2:$("p2"), p3:$("p3") };
    1. 第1組走 P1（斜穿到左下）
    2. 第2組走 P2（斜穿到右下）
    3. 第3組走 P3（繞右側越過頂端）
-   4. 第1組滑到 P2 起點，沿著剛剛 2 走過的路徑走回右邊 */
+   4. 第1組滑到 P2 起點，沿著剛剛 2 走過的路徑走回來
+   5. 依此類推：第2組沿 3 的路徑走、第3組沿 1 的路徑走 */
 const legs = [
   { group:"g1", path:"p1", dur:2600, label:"① 出發" },
   { group:"g2", path:"p2", dur:2600, label:"② 出發" },
   { group:"g3", path:"p3", dur:2600, label:"③ 出發" },
   { group:"g1", glideToStartOf:"p2", dur:900,  label:"① 折返準備" },
   { group:"g1", path:"p2", dur:2600, label:"① 沿②的路徑走回來" },
+  { group:"g2", glideToStartOf:"p3", dur:900,  label:"② 折返準備" },
+  { group:"g2", path:"p3", dur:2600, label:"② 沿③的路徑走回來" },
+  { group:"g3", glideToStartOf:"p1", dur:900,  label:"③ 折返準備" },
+  { group:"g3", path:"p1", dur:2600, label:"③ 沿①的路徑走回來" },
 ];
 
 const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
