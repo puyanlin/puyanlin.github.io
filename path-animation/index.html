@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>路徑動畫</title>
+<style>
+  :root{
+    --canvas:#c9c9c9; --page:#ececec; --line:#e8ddb5; --ink:#5a4a7a;
+  }
+  *{box-sizing:border-box; margin:0;}
+  body{
+    background:var(--page);
+    font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+    min-height:100vh; padding:16px; gap:12px;
+  }
+  .stage{
+    width:min(1100px,100%);
+    border:1px solid #bbb; border-radius:8px; overflow:hidden;
+    box-shadow:0 4px 16px rgba(0,0,0,.12); background:var(--canvas);
+  }
+  svg{display:block; width:100%; height:auto;}
+  .bar{
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
+  }
+  button{
+    font:inherit; font-size:16px; padding:8px 22px; border-radius:999px;
+    border:1px solid #999; background:#fff; cursor:pointer;
+  }
+  button:hover{background:#f5f5f5;}
+  select{font:inherit; padding:6px 8px; border-radius:8px;}
+  #status{font-size:15px; color:#444; min-width:12em; text-align:center;}
+</style>
+</head>
+<body>
+
+<div class="stage">
+<!-- 座標系 1176 x 680，對應原圖比例。路徑 d 值可自行微調。 -->
+<svg viewBox="0 0 1176 680" aria-label="紅綠燈路徑動畫">
+  <rect width="1176" height="680" fill="#c9c9c9"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e8ddb5"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 路徑（米色參考線，起點都對準各組錨點）===== -->
+  <!-- P1：第 1 組（右上）斜穿中央到左下、勾起向上的箭頭 -->
+  <path id="p1" d="M 1035 195 C 920 230, 790 265, 680 330 C 560 400, 420 500, 310 565 C 255 595, 210 560, 196 496"
+        fill="none" stroke="#e8ddb5" stroke-width="4" marker-end="url(#arrow)"/>
+  <!-- P2：第 2 組（左）斜穿中央到右下箭頭 -->
+  <path id="p2" d="M 205 194 C 420 180, 540 270, 615 365 C 700 470, 800 560, 866 625"
+        fill="none" stroke="#e8ddb5" stroke-width="4" marker-end="url(#arrow)"/>
+  <!-- P3：第 3 組（右下）繞右側上去、越過頂端後往左下的箭頭 -->
+  <path id="p3" d="M 1030 497 C 1120 470, 1150 380, 1150 280 C 1150 150, 1120 60, 1000 40 C 880 22, 800 80, 763 152"
+        fill="none" stroke="#e8ddb5" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- 紫色編號 -->
+  <text x="905" y="235" font-size="46" fill="#7b4b9e">①</text>
+  <text x="345" y="285" font-size="46" fill="#7b4b9e">②</text>
+  <text x="1115" y="395" font-size="46" fill="#7b4b9e">③</text>
+
+  <!-- ===== 三組號誌（data-ax/ay = 錨點，供動畫計算）===== -->
+  <g id="g1" data-ax="1035" data-ay="195">
+    <rect x="982" y="62" width="7" height="270" rx="3" fill="#e8ddb5"/>
+    <circle cx="1057" cy="140" r="54" fill="#f2e500"/>
+    <circle cx="1057" cy="251" r="54" fill="#2aa74a" stroke="#f0b400" stroke-width="6"/>
+  </g>
+
+  <g id="g2" data-ax="205" data-ay="194">
+    <rect x="245" y="48" width="7" height="307" rx="3" fill="#e8ddb5"/>
+    <circle cx="181" cy="128" r="54" fill="#f5a623" stroke="#e02020" stroke-width="6"/>
+    <circle cx="181" cy="260" r="54" fill="#000" stroke="#fff" stroke-width="6"/>
+  </g>
+
+  <g id="g3" data-ax="1030" data-ay="497">
+    <rect x="973" y="368" width="7" height="277" rx="3" fill="#e8ddb5"/>
+    <circle cx="1053" cy="431" r="54" fill="#e8201a" stroke="#f07820" stroke-width="6"/>
+    <circle cx="1056" cy="564" r="54" fill="#fff" stroke="#f07820" stroke-width="6"/>
+  </g>
+</svg>
+</div>
+
+<div class="bar">
+  <button id="play">▶ 播放</button>
+  <label>速度
+    <select id="speed">
+      <option value="0.5">0.5x</option>
+      <option value="1" selected>1x</option>
+      <option value="2">2x</option>
+    </select>
+  </label>
+  <span id="status">按「播放」開始</span>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const groups = {};
+for (const id of ["g1","g2","g3"]) {
+  const el = $(id);
+  groups[id] = {
+    el,
+    home: { x:+el.dataset.ax, y:+el.dataset.ay }, // 錨點原始位置
+    off:  { x:0, y:0 }                            // 目前累積位移
+  };
+}
+const paths = { p1:$("p1"), p2:$("p2"), p3:$("p3") };
+
+/* 動畫腳本：依序執行
+   1. 第1組走 P1（斜穿到左下）
+   2. 第2組走 P2（斜穿到右下）
+   3. 第3組走 P3（繞右側越過頂端）
+   4. 第1組滑到 P2 起點，沿著剛剛 2 走過的路徑走回右邊 */
+const legs = [
+  { group:"g1", path:"p1", dur:2600, label:"① 出發" },
+  { group:"g2", path:"p2", dur:2600, label:"② 出發" },
+  { group:"g3", path:"p3", dur:2600, label:"③ 出發" },
+  { group:"g1", glideToStartOf:"p2", dur:900,  label:"① 折返準備" },
+  { group:"g1", path:"p2", dur:2600, label:"① 沿②的路徑走回來" },
+];
+
+const ease = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+const setPos = g => g.el.setAttribute("transform", `translate(${g.off.x},${g.off.y})`);
+
+let running = false;
+
+async function runLeg(leg, speed){
+  const g = groups[leg.group];
+  const dur = leg.dur / speed;
+  const from = { ...g.off };
+  let delta;
+
+  if (leg.path) {
+    const p = paths[leg.path];
+    const len = p.getTotalLength();
+    const p0 = p.getPointAtLength(0);
+    delta = t => {
+      const pt = p.getPointAtLength(len * ease(t));
+      return { x: from.x + (pt.x - p0.x), y: from.y + (pt.y - p0.y) };
+    };
+  } else {
+    // 滑移到指定路徑的起點（錨點對齊）
+    const p0 = paths[leg.glideToStartOf].getPointAtLength(0);
+    const target = { x: p0.x - g.home.x, y: p0.y - g.home.y };
+    delta = t => {
+      const e = ease(t);
+      return { x: from.x + (target.x - from.x)*e, y: from.y + (target.y - from.y)*e };
+    };
+  }
+
+  $("status").textContent = leg.label;
+  await new Promise(done => {
+    const t0 = performance.now();
+    (function frame(now){
+      if (!running) return done();
+      const t = Math.min((now - t0)/dur, 1);
+      g.off = delta(t); setPos(g);
+      t < 1 ? requestAnimationFrame(frame) : done();
+    })(t0);
+  });
+}
+
+async function playAll(){
+  // 重設
+  running = false;
+  await new Promise(r => requestAnimationFrame(r));
+  for (const g of Object.values(groups)) { g.off = {x:0,y:0}; setPos(g); }
+  running = true;
+  const speed = +$("speed").value;
+  for (const leg of legs) {
+    if (!running) return;
+    await runLeg(leg, speed);
+    await new Promise(r => setTimeout(r, 250/speed));
+  }
+  if (running) $("status").textContent = "完成 ✅（可再播放）";
+  running = false;
+  $("play").textContent = "↻ 重播";
+}
+
+$("play").addEventListener("click", playAll);
+</script>
+</body>
+</html>
