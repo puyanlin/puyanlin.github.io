@@ -21,7 +21,7 @@
 </head>
 <body>
   <h1>奇貼 / KidStickers & 一起貼 / TogetherStickers – 隱私權政策 <span class="muted">Privacy Policy</span></h1>
-  <p class="muted">最後更新 Last Updated: 2025-Jan-16</p>
+  <p class="muted">最後更新 Last Updated: 2026-Sep-21</p>
 
   <div class="lang" id="zh">
     <h2>中文版</h2>
@@ -32,6 +32,15 @@
       <li><b>iCloud 私有資料庫（CloudKit Private DB）</b>：您的貼紙簿資料（孩子暱稱、貼紙與獎勵設定等）會以結構化格式儲存在您 Apple ID 名下的 iCloud 私有資料庫。<u>只有您本人可存取，開發者無法檢視。</u></li>
       <li><b>iCloud 共享（CloudKit Shared DB）</b>：「一起貼」支援 iCloud 共享功能，讓您與他人共享貼紙簿。共享資料同樣以結構化格式儲存，<u>僅限共享發起者與受邀者能檢視，開發者無法存取。</u></li>
       <li><b>推播通知權限</b>：用於資料同步事件通知。</li>
+      <li><b>AI 貼紙故事／摘要（Apple Intelligence）</b>：當您在 App 內<u>主動點選</u>「AI 貼紙故事／摘要」時，App 會把該位孩子的暱稱，以及您所選期間內每張貼紙的日期與備註文字，交給 Apple 的語言模型產生一段文字。不包含照片、頭像，也不包含其他孩子的資料。
+        <ul>
+          <li>自「奇貼」1.20.0、「一起貼」1.15.0 起，在 iOS 27 以上且支援 Apple Intelligence 的裝置上，會優先使用 Apple 的 <b>Private Cloud Compute（私密雲端運算）</b>：上述文字會由您的裝置直接傳送到 Apple 的伺服器處理。資料不經過開發者，<u>開發者收不到、也無法存取這些內容或產生的結果。</u>依 Apple 的說明，送往 Private Cloud Compute 的資料僅用於處理當次請求、不會被保留；其隱私與安全設計請參閱 <a href="https://security.apple.com/blog/private-cloud-compute/">Apple 的官方說明</a>。</li>
+          <li>當 Private Cloud Compute 無法使用時（例如沒有網路，或已達當日用量上限），以及在較早的 App 版本中，則由裝置端的 Apple Intelligence 模型處理，資料不會離開您的裝置。</li>
+          <li>這項功能只在您每次點選時執行一次；不使用它，就不會有資料因此送出。產生的文字只顯示在畫面上，App 不會另行儲存，除非您自行選擇分享。</li>
+        </ul>
+      </li>
+      <li><b>當機診斷（Firebase Crashlytics）</b>：App 發生當機時，會將當機診斷資訊（例如裝置型號、系統與 App 版本、當機時的程式堆疊，以及一組隨機產生、用來區分安裝的識別碼）傳送到 Google 的 Firebase Crashlytics，僅用於找出並修正問題。我們不會在其中附加您的貼紙簿內容、孩子的暱稱或照片。</li>
+      <li><b>使用統計（Firebase Analytics，僅「一起貼」）</b>：「一起貼」會透過 Google 的 Firebase Analytics 收集不具名的使用統計（例如 App 開啟與畫面瀏覽、App 版本、裝置型號、系統版本、語言與大略地區，以及一組隨機產生的 App 安裝識別碼），用於了解功能的使用情形。其中不包含貼紙簿內容、孩子的暱稱或照片；App 不會請求追蹤權限，因此不會取得廣告識別碼（IDFA）。「奇貼」已停用此項收集。</li>
     </ul>
 
     <h3>我們不會</h3>
@@ -44,12 +53,14 @@
     <h3>資料保留與安全</h3>
     <ul>
       <li>您可隨時刪除 App；資料仍存於您的 iCloud，直到您於 iCloud 介面或於重新安裝後在 App 內刪除。</li>
-      <li>CloudKit 之傳輸與儲存安全由 Apple 提供；我們不會另行上傳到第三方伺服器。</li>
+      <li>CloudKit 之傳輸與儲存安全由 Apple 提供。您的貼紙簿內容只存放在 iCloud；除上述的 AI 功能（Apple）、當機診斷與使用統計（Google Firebase）之外，我們不會把資料傳送到其他第三方伺服器。</li>
     </ul>
 
     <h3>第三方服務</h3>
     <ul>
       <li>Apple iCloud / CloudKit（私有儲存與同步）</li>
+      <li>Apple Intelligence（裝置端模型與 Private Cloud Compute，用於 AI 貼紙故事／摘要）</li>
+      <li>Google Firebase Crashlytics（當機診斷）；Google Firebase Analytics（使用統計，僅「一起貼」）。Firebase 的資料處理方式請參閱 <a href="https://firebase.google.com/support/privacy">Firebase 隱私權與安全性說明</a>。</li>
     </ul>
 
     <h3>兒童隱私</h3>
@@ -70,6 +81,15 @@
       <li><b>iCloud CloudKit Private DB</b>: Your sticker book data (child nicknames, stickers, rewards) is stored in a structured format in your iCloud Private Database. <u>Only you can access it; the developer cannot view it.</u></li>
       <li><b>iCloud CloudKit Shared DB</b>: TogetherStickers supports iCloud sharing, allowing you to share sticker books with others. Shared data is also stored in a structured format. <u>Only the share creator and invitees can view it; the developer cannot access it.</u></li>
       <li><b>Push Notifications</b>: Used for data sync notifications.</li>
+      <li><b>AI sticker story / summary (Apple Intelligence)</b>: When you <u>choose to tap</u> "AI sticker story / summary" in the App, the App passes that child's nickname, plus the date and note text of each sticker in the period you selected, to Apple's language model to generate a short text. No photos or avatars are included, and no data about your other children.
+        <ul>
+          <li>Starting with KidStickers 1.20.0 and TogetherStickers 1.15.0, on devices running iOS 27 or later that support Apple Intelligence, the App prefers Apple's <b>Private Cloud Compute</b>: the text above is sent from your device directly to Apple's servers for processing. It never passes through the developer; <u>the developer does not receive and cannot access this content or the generated result.</u> According to Apple, data sent to Private Cloud Compute is used only to fulfil that request and is not retained; for its privacy and security design, see <a href="https://security.apple.com/blog/private-cloud-compute/">Apple's official description</a>.</li>
+          <li>When Private Cloud Compute is unavailable (for example, no network connection or the daily usage limit has been reached), and in earlier versions of the Apps, the on-device Apple Intelligence model is used instead and the data does not leave your device.</li>
+          <li>The feature runs once each time you tap it; if you do not use it, nothing is sent for this purpose. The generated text is only shown on screen and is not stored by the App unless you choose to share it.</li>
+        </ul>
+      </li>
+      <li><b>Crash diagnostics (Firebase Crashlytics)</b>: If the App crashes, crash diagnostics (such as device model, OS and App version, the stack trace at the time of the crash, and a randomly generated installation identifier) are sent to Google's Firebase Crashlytics, solely to find and fix problems. We do not attach your sticker book content, child nicknames, or photos.</li>
+      <li><b>Usage statistics (Firebase Analytics, TogetherStickers only)</b>: TogetherStickers uses Google's Firebase Analytics to collect non-identifying usage statistics (such as app opens and screen views, App version, device model, OS version, language and approximate region, and a randomly generated app-instance identifier) to understand how features are used. This does not include sticker book content, child nicknames, or photos; the App does not request tracking permission, so it does not obtain the advertising identifier (IDFA). This collection is disabled in KidStickers.</li>
     </ul>
 
     <h3>We do not</h3>
@@ -82,12 +102,14 @@
     <h3>Retention & Security</h3>
     <ul>
       <li>You may delete the App anytime; data remains in iCloud until you remove it via iCloud or within the App after reinstall.</li>
-      <li>Transport and at-rest security are provided by Apple CloudKit; we do not upload to other third-party servers.</li>
+      <li>Transport and at-rest security are provided by Apple CloudKit. Your sticker book content is stored only in iCloud; apart from the AI feature (Apple) and the crash diagnostics and usage statistics (Google Firebase) described above, we do not send data to any other third-party servers.</li>
     </ul>
 
     <h3>Third-Party Services</h3>
     <ul>
       <li>Apple iCloud / CloudKit (private storage & sync)</li>
+      <li>Apple Intelligence (on-device model and Private Cloud Compute, for the AI sticker story / summary)</li>
+      <li>Google Firebase Crashlytics (crash diagnostics); Google Firebase Analytics (usage statistics, TogetherStickers only). For how Firebase handles data, see <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a>.</li>
     </ul>
 
     <h3>Children's Privacy</h3>
