@@ -21,7 +21,7 @@
 </head>
 <body>
   <h1>i 刷 / iBrush – 隱私權政策 <span class="muted">Privacy Policy</span></h1>
-  <p class="muted">最後更新 Last Updated: 2026-Sep-21</p>
+  <p class="muted">最後更新 Last Updated: 2026-Sep-22</p>
 
   <div class="lang" id="zh">
     <h2>中文版</h2>
@@ -31,7 +31,7 @@
     <ul>
       <li><b>刷牙偵測（裝置端）</b>：i 刷使用前鏡頭在<u>裝置本地</u>即時偵測刷牙動作並計算點數。i 刷不會錄影，相機畫面不會被 App 儲存。</li>
       <li><b>AI 刷牙教練（Apple Intelligence）</b>：在 iOS 27 以上且已開啟 Apple Intelligence 的裝置，「AI 刷牙教練」會自動啟用（App 內沒有個別的關閉選項），刷牙過程中每隔幾秒會有一張縮小後的相機畫面交給 Apple Intelligence 分析，用來判斷是否正在刷牙、給予評分與一句語音回饋。分析可能在裝置端進行，也可能傳送到 Apple 的私密雲端運算（Private Cloud Compute）處理。<u>畫面只用於當次分析，App 不會儲存；開發者不會收到、也無法存取這些畫面。</u>隨畫面送出的只有一小段文字指示（例如目前該刷哪一區），不包含孩子的名字或其他個人資料。Apple 對 Private Cloud Compute 的隱私說明請見 <a href="https://security.apple.com/blog/private-cloud-compute/">Apple 官方說明</a>。</li>
-      <li><b>AI 獎勵門檻試算（Apple Intelligence，裝置端）</b>：家長使用 AI 試算獎勵點數時，刷牙統計完全在裝置端運算，不會離開這台裝置。</li>
+      <li><b>AI 獎勵門檻試算（Apple Intelligence）</b>：家長使用 AI 試算獎勵點數時，App 會把孩子在 App 內的名字與近期刷牙統計（刷牙次數、天數、獲得與持有的點數）以及家長已設定的其他獎勵門檻交給 Apple Intelligence 分析，不包含照片或相機畫面。分析可能在裝置端進行，也可能傳送到 Apple 的私密雲端運算（Private Cloud Compute）處理。<u>這些資料只用於當次試算，App 不會另外儲存；開發者不會收到、也無法存取。</u>Apple 對 Private Cloud Compute 的隱私說明請見 <a href="https://security.apple.com/blog/private-cloud-compute/">Apple 官方說明</a>。</li>
       <li><b>模型訓練資料（僅舊版）</b>：自加入「AI 刷牙教練」的版本起，i 刷<u>不再上傳任何刷牙畫面作為模型訓練資料</u>，相關的同意選項也已移除。較舊的版本在使用者同意時，會將匿名刷牙畫面傳往 Firebase Storage 供偵測模型訓練使用，不做其他用途，並於上傳後 180 天內刪除。</li>
       <li><b>iCloud 私有資料庫（CloudKit Private DB）</b>：您的刷牙記錄資料（孩子暱稱、刷牙紀錄與獎勵設定等）會以結構化格式儲存在您 Apple ID 名下的 iCloud 私有資料庫。<u>只有您本人可存取，開發者無法檢視。</u></li>
       <li><b>iCloud 共享（CloudKit Shared DB）</b>：「i 刷」支援 iCloud 共享功能，讓您與他人共享刷牙記錄。共享資料同樣以結構化格式儲存，<u>僅限共享發起者與受邀者能檢視，開發者無法存取。</u></li>
@@ -81,7 +81,7 @@
     <ul>
       <li><b>Brushing detection (on-device)</b>: iBrush uses the front camera to detect brushing and award points <u>locally on your device</u>. iBrush does not record video, and camera frames are not stored by the App.</li>
       <li><b>AI Brushing Coach (Apple Intelligence)</b>: On devices running iOS 27 or later with Apple Intelligence turned on, the "AI Brushing Coach" is enabled automatically (there is no separate switch in the App), and a downscaled camera frame is handed to Apple Intelligence every few seconds while brushing, to tell whether brushing is happening and to give a score and one spoken sentence of feedback. The analysis may run on-device or may be sent to Apple's Private Cloud Compute for processing. <u>Frames are used only for that single analysis and are not stored by the App; the developer never receives them and cannot access them.</u> The only other thing sent with a frame is a short text instruction (such as which area to brush); it does not include the child's name or other personal data. See <a href="https://security.apple.com/blog/private-cloud-compute/">Apple's description of Private Cloud Compute</a> for its privacy protections.</li>
-      <li><b>AI reward suggestions (Apple Intelligence, on-device)</b>: When a parent asks the AI to suggest a reward threshold, brushing statistics are processed entirely on-device and never leave the device.</li>
+      <li><b>AI reward suggestions (Apple Intelligence)</b>: When a parent asks the AI to suggest a reward threshold, the App hands Apple Intelligence the child's name as entered in the App, recent brushing statistics (number of sessions, days, points earned and held) and the thresholds of other rewards the parent has set up; no photos or camera frames are included. The analysis may run on-device or may be sent to Apple's Private Cloud Compute for processing. <u>This data is used only for that single suggestion and is not stored by the App; the developer never receives it and cannot access it.</u> See <a href="https://security.apple.com/blog/private-cloud-compute/">Apple's description of Private Cloud Compute</a> for its privacy protections.</li>
       <li><b>Model training data (older versions only)</b>: Starting with the version that introduces the AI Brushing Coach, iBrush <u>no longer uploads any brushing frames as model training data</u>, and the related consent option has been removed. Older versions, with the user's consent, uploaded anonymous brushing frames to Firebase Storage solely to train the detection model; that data is deleted within 180 days of upload.</li>
       <li><b>iCloud CloudKit Private DB</b>: Your brushing record data (child nicknames, brushing records, rewards) is stored in a structured format in your iCloud Private Database. <u>Only you can access it; the developer cannot view it.</u></li>
       <li><b>iCloud CloudKit Shared DB</b>: iBrush supports iCloud sharing, allowing you to share brushing records with others. Shared data is also stored in a structured format. <u>Only the share creator and invitees can view it; the developer cannot access it.</u></li>
