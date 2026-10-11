@@ -9,16 +9,16 @@
   <meta http-equiv="refresh" content="0; url=https://www.kidstickers.app/support" />
   <script>
     (function () {
-      // 舊頁面有語言切換（存在 localStorage 的 kidstickers_lang）；英文使用者直接到英文版
+      // 舊頁面有語言切換（存在 localStorage 的 kidstickers_lang）；英文使用者直接到英文版 /en/support
       var lang = "";
       try { lang = localStorage.getItem("kidstickers_lang") || ""; } catch (e) {}
       if (!lang) lang = navigator.language || "";
-      location.replace("https://www.kidstickers.app/support" + (/^zh/i.test(lang) ? "" : "#en"));
+      location.replace("https://www.kidstickers.app" + (/^zh/i.test(lang) ? "" : "/en") + "/support");
     })();
   </script>
 </head>
 <body>
   <p>支援頁已搬到 <a href="https://www.kidstickers.app/support">www.kidstickers.app/support</a>。</p>
-  <p lang="en">Support has moved to <a href="https://www.kidstickers.app/support#en">www.kidstickers.app/support</a>.</p>
+  <p lang="en">Support has moved to <a href="https://www.kidstickers.app/en/support">www.kidstickers.app/en/support</a>.</p>
 </body>
 </html>

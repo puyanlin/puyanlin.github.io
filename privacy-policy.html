@@ -9,14 +9,14 @@
   <meta http-equiv="refresh" content="0; url=https://www.kidstickers.app/privacy/ios" />
   <script>
     (function () {
-      // 舊頁面的 #zh／#en 錨點：#en 或非中文的瀏覽器直接到英文版
+      // 舊頁面的 #zh／#en 錨點：#en 或非中文的瀏覽器直接到英文版 /en/privacy/ios
       var en = location.hash === "#en" || (location.hash !== "#zh" && !/^zh/i.test(navigator.language || ""));
-      location.replace("https://www.kidstickers.app/privacy/ios" + (en ? "#en" : ""));
+      location.replace("https://www.kidstickers.app" + (en ? "/en" : "") + "/privacy/ios");
     })();
   </script>
 </head>
 <body>
   <p>隱私權政策已搬到 <a href="https://www.kidstickers.app/privacy/ios">www.kidstickers.app/privacy/ios</a>。</p>
-  <p lang="en">This privacy policy has moved to <a href="https://www.kidstickers.app/privacy/ios#en">www.kidstickers.app/privacy/ios</a>.</p>
+  <p lang="en">This privacy policy has moved to <a href="https://www.kidstickers.app/en/privacy/ios">www.kidstickers.app/en/privacy/ios</a>.</p>
 </body>
 </html>
