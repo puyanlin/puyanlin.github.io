@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>不摺手段 Fold Club 支援 Support</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    }
+    html,body{background:var(--bg);color:var(--fg)}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
+    h1,h2{line-height:1.25}
+    .muted{color:var(--muted);font-weight:normal}
+    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    a{color:inherit}
+    /* Language switcher */
+    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
+    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+
+    /* i18n visibility rules */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:block}
+    html[lang="en"] .i18n.en{display:block}
+  </style>
+</head>
+<body>
+  <div class="langbar" role="group" aria-label="Language">
+    <span class="muted">Language</span>
+    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
+    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
+  </div>
+
+  <h1>
+    <span class="i18n zh">不摺手段 支援 <span class="muted">Support</span></span>
+    <span class="i18n en">Fold Club <span class="muted">Support</span></span>
+  </h1>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">聯絡我們 Contact</span>
+      <span class="i18n en">Contact</span>
+    </h2>
+    <p class="i18n zh">感謝您使用《不摺手段》！需要協助、回報問題或想許願新遊戲，請來信：</p>
+    <p class="i18n en">Thanks for playing Fold Club! If you need help, want to report an issue, or have a game you would like to see, please email us:</p>
+    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <span class="i18n zh">常見問題 FAQ</span>
+      <span class="i18n en">FAQ</span>
+    </h2>
+    <ul>
+      <li class="i18n zh"><b>一定要有 iPhone Duo 才能玩嗎？</b> 不用。一般 iPhone、iPad 都能玩大部分的遊戲；只有幾款用到摺疊角度的遊戲需要 iPhone Duo，在其他裝置上會另外放在「摺疊機限定」一區。</li>
+      <li class="i18n en"><b>Do I need an iPhone Duo?</b> No. Most games work on any iPhone or iPad. Only the few games that use the hinge angle need an iPhone Duo; on other devices they are listed in a separate “Foldable only” section.</li>
+
+      <li class="i18n zh"><b>Pro 包含什麼？</b> 一次買斷（不是訂閱）：解鎖標示 Pro 的遊戲，並拿掉大廳裡的廣告。支援家人共享，Apple Watch 上同一個 Apple 帳號也會一起解鎖。</li>
+      <li class="i18n en"><b>What does Pro include?</b> A one-time purchase (not a subscription) that unlocks the games marked Pro and removes the ads in the lobby. It supports Family Sharing, and also unlocks on an Apple Watch using the same Apple Account.</li>
+
+      <li class="i18n zh"><b>買過了但還是鎖著？</b> 到購買畫面點「回復購買」。請確認裝置登入的是購買時的 Apple 帳號，並且連得上網路。</li>
+      <li class="i18n en"><b>I bought Pro but games are still locked.</b> Open the purchase screen and tap “Restore purchase”. Make sure the device is signed in to the Apple Account used for the purchase and is online.</li>
+
+      <li class="i18n zh"><b>怎麼跟朋友連線對戰？</b> 兩台以上的裝置都登入 Game Center，在大廳點連線對戰、找對手或邀請朋友。2 到 4 人一桌，由主揪選遊戲；只有每個人都玩得了的遊戲會出現在清單裡。</li>
+      <li class="i18n en"><b>How do I play online with friends?</b> Sign in to Game Center on each device, open Play Online from the lobby, then find opponents or invite friends. A table seats 2 to 4 players and the host picks the game. Only games that everyone at the table can play are listed.</li>
+
+      <li class="i18n zh"><b>連線顯示登入失敗？</b> 請到 iOS【設定 ▸ Game Center】確認已登入，再回到 App 重試。</li>
+      <li class="i18n en"><b>Online says sign-in failed.</b> Check that you are signed in under iOS Settings ▸ Game Center, then return to the App and try again.</li>
+
+      <li class="i18n zh"><b>會顯示廣告嗎？</b> 免費版只在大廳的遊戲清單裡顯示廣告，遊戲進行中沒有；購買 Pro 後不再顯示。</li>
+      <li class="i18n en"><b>Does the app show ads?</b> The free version shows ads only in the game list in the lobby, never during a game. Ads are removed after you buy Pro.</li>
+
+      <li class="i18n zh"><b>彈珠台一直偏一邊？</b> 彈珠台會跟著手機傾斜。想固定的話，在遊戲畫面把「會傾斜」切成「不傾斜」。</li>
+      <li class="i18n en"><b>The pinball keeps drifting to one side.</b> The table follows the tilt of your phone. To keep it level, switch “Tilt on” to “Tilt off” on the game screen.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Policies</h2>
+    <ul>
+      <li>
+        <a href="fold-club-privacy-policy.html">
+          <span class="i18n zh">隱私權政策 Privacy Policy</span>
+          <span class="i18n en">Privacy Policy</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    (function(){
+      const LS_KEY = 'fold_club_lang';
+      const zhBtn = document.getElementById('btn-zh');
+      const enBtn = document.getElementById('btn-en');
+      const setTitle = (lang) => {
+        document.title = (lang === 'en') ? 'Fold Club Support' : '不摺手段 支援 Support';
+      };
+      const setLang = (lang) => {
+        document.documentElement.setAttribute('lang', lang);
+        localStorage.setItem(LS_KEY, lang);
+        const zhActive = lang.startsWith('zh');
+        zhBtn.setAttribute('aria-pressed', String(zhActive));
+        enBtn.setAttribute('aria-pressed', String(!zhActive));
+        setTitle(lang);
+      };
+      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
+      enBtn.addEventListener('click', () => setLang('en'));
+
+      // initialize language from storage or browser preference
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        setLang(saved);
+      } else {
+        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
+        setLang(prefersZh ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
+
+
