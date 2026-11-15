@@ -30,7 +30,8 @@
     <h3>我們收集或使用的資料</h3>
     <ul>
       <li><b>廣告（Google Mobile Ads / AdMob）</b>：免費版在遊戲大廳的清單裡會顯示廣告，遊戲進行中沒有廣告。廣告供應商 Google 可能蒐集裝置識別碼（您允許追蹤時才包含 IDFA）、IP 位址（用來推估大略地區）、裝置型號與系統版本、廣告的顯示與點擊紀錄，以及診斷資料，用於投遞與衡量廣告、防止不正常流量。第一次載入廣告前，App 會依 iOS 的規定詢問是否允許追蹤；不允許也能照常遊玩，只是廣告不會依您的興趣投放。您可以隨時在 iOS【設定 ▸ 隱私權與安全性 ▸ 追蹤】變更。購買 Pro 之後不再顯示廣告，也不會再詢問追蹤。詳見 <a href="https://policies.google.com/technologies/partner-sites">Google 如何使用合作夥伴網站與 App 的資料</a>。</li>
-      <li><b>Game Center / GameKit</b>：用於排行榜與 2 到 4 人的連線對戰（配對、傳送每回合的成績）。您的 Game Center 暱稱與成績由 Apple 處理並顯示給同場玩家與排行榜；開發者沒有自己的伺服器，也拿不到您的 Apple 帳號資料。不登入 Game Center 仍可單機遊玩。</li>
+      <li><b>Game Center / GameKit</b>：用於排行榜。您的 Game Center 暱稱與成績由 Apple 處理並顯示在排行榜上；開發者拿不到您的 Apple 帳號資料。不登入 Game Center 仍可遊玩。</li>
+      <li><b>連線對戰（Google Firebase）</b>：Pro 的連線對戰使用 Google 的 Firebase（匿名登入與即時資料庫，資料存放在新加坡），跟 Android 版是同一個服務。開桌或進房間時，App 會匿名登入並取得一組隨機的使用者代碼，不需要帳號、電子郵件或電話；連線時也會附上 Apple 的 App Attest 證明，讓服務確認是正版的 App（不含個人資料）。暱稱預設是您的 Game Center 名字（沒登入時是「玩家」加三位數字），可以自己改。您的暱稱、所在的房間與每回合的成績會暫時存在資料庫裡，讓同一桌的玩家看得到；您離開房間或斷線時，您的資料會從房間移除，所有人都離開後整個房間會被清掉。不玩連線對戰就不會用到這項服務。</li>
       <li><b>Apple Intelligence</b>：在支援的裝置上，結算畫面的一句講評與「打小人」的小人稱號由 Apple 的語言模型產生（在裝置端，或經由 Apple 的 Private Cloud Compute）。送給模型的只有遊戲名稱、成績數字與是否破紀錄，不含任何個人資料；產生的文字不會儲存或回傳給開發者。裝置不支援或暫時無法使用時，App 會改用內建的句子。</li>
       <li><b>App 內購買</b>：「Pro」由 Apple 的 App Store 處理付款。App 只會得知「是否已購買」，拿不到您的付款資料。若您有配對的 Apple Watch，這個購買狀態會在您自己的 iPhone 與手錶之間同步。</li>
       <li><b>動作感測與摺疊角度</b>：部分遊戲會讀取裝置的傾斜方向，或 iPhone Duo 的開合角度來操作遊戲。這些數值只在裝置上即時使用，不會儲存，也不會傳出裝置。</li>
@@ -51,14 +52,14 @@
     <h3>我們不會</h3>
     <ul>
       <li>建立帳號或要求您提供姓名、電子郵件、電話等個人資料。</li>
-      <li>把您的資料上傳到開發者自有的伺服器（iOS 版沒有任何伺服器；Android 版只有上面說的連線對戰會用到 Firebase）。</li>
+      <li>把您的資料上傳到開發者自有的伺服器（只有上面說的連線對戰會用到 Firebase）。</li>
       <li>使用相機、麥克風、照片、通訊錄或精確位置。</li>
       <li>發送推播通知。</li>
     </ul>
 
     <h3>資料保留與刪除</h3>
     <ul>
-      <li>刪除 App 即可移除儲存在裝置上的遊戲紀錄與設定。</li>
+      <li>刪除 App 即可移除儲存在裝置上的遊戲紀錄、設定與暱稱；連線房間裡的資料在您離開時就會移除。</li>
       <li>排行榜上的成績由 Apple 的 Game Center 保存，可在 iOS【設定 ▸ Game Center】管理。</li>
       <li>廣告相關資料由 Google 依其隱私權政策保存與處理。</li>
     </ul>
@@ -66,10 +67,11 @@
     <h3>第三方服務</h3>
     <ul>
       <li>Google Mobile Ads SDK（廣告投放與衡量）— <a href="https://policies.google.com/privacy">Google 隱私權政策</a></li>
-      <li>Apple Game Center / GameKit（排行榜與連線對戰）</li>
+      <li>Apple Game Center / GameKit（排行榜）</li>
       <li>Apple Intelligence（產生遊戲中的短句）</li>
       <li>Apple App Store（App 內購買）</li>
-      <li>Google Firebase（Android 版的連線對戰）— <a href="https://firebase.google.com/support/privacy">Firebase 的隱私權與安全性</a></li>
+      <li>Apple App Attest（連線對戰時確認是正版的 App）</li>
+      <li>Google Firebase（連線對戰）— <a href="https://firebase.google.com/support/privacy">Firebase 的隱私權與安全性</a></li>
       <li>Google Play（Android 版的 App 內購買）</li>
       <li>Google Play Games（Android 版的排行榜）</li>
     </ul>
@@ -93,7 +95,8 @@
     <h3>Data we collect or use</h3>
     <ul>
       <li><b>Ads (Google Mobile Ads / AdMob)</b>: The free version shows ads in the game list in the lobby. There are no ads during gameplay. The ad provider, Google, may collect device identifiers (the IDFA only if you allow tracking), your IP address (used to estimate a general region), device model and OS version, ad impressions and taps, and diagnostic data, in order to deliver and measure ads and to prevent invalid traffic. Before the first ad loads, the App asks for tracking permission as required by iOS. You can decline and still play; ads will simply not be personalised. You can change this at any time in iOS Settings ▸ Privacy &amp; Security ▸ Tracking. After you buy Pro, ads are no longer shown and the tracking prompt no longer appears. See <a href="https://policies.google.com/technologies/partner-sites">how Google uses data from sites and apps that use its services</a>.</li>
-      <li><b>Game Center / GameKit</b>: Used for leaderboards and online matches for 2 to 4 players (matchmaking and sending each round’s score). Your Game Center nickname and scores are handled by Apple and shown to players in the same match and on leaderboards. The developer runs no servers and cannot access your Apple account information. You can play offline without signing in to Game Center.</li>
+      <li><b>Game Center / GameKit</b>: Used for leaderboards. Your Game Center nickname and scores are handled by Apple and shown on leaderboards. The developer cannot access your Apple account information. You can play without signing in to Game Center.</li>
+      <li><b>Online play (Google Firebase)</b>: Online play, a Pro feature, uses Google Firebase (Anonymous Authentication and Realtime Database, hosted in Singapore), the same service the Android version uses. When you open or join a table, the App signs in anonymously and receives a random user ID. No account, email or phone number is needed. The App also attaches an Apple App Attest attestation so the service can confirm it is the genuine App; it contains no personal data. Your nickname starts as your Game Center name (or “Player” plus three digits if you are not signed in), and you can change it. Your nickname, the room you are in and each round’s score are stored temporarily so that players at the same table can see them. Your entry is removed when you leave the room or disconnect, and the whole room is cleared once everyone has left. If you never play online, this service is not used.</li>
       <li><b>Apple Intelligence</b>: On supported devices, the one-line remark on the result screen and the nicknames in “Whack a Jerk” are generated by Apple’s language model (on device, or through Apple’s Private Cloud Compute). Only the game name, the score and whether it is a new record are sent to the model. No personal data is included, and the generated text is not stored or sent to the developer. When the feature is unavailable, the App uses built-in lines instead.</li>
       <li><b>In-app purchase</b>: “Pro” is paid for through Apple’s App Store. The App only learns whether the purchase exists and never receives your payment details. If you have a paired Apple Watch, that purchase status is synced between your own iPhone and watch.</li>
       <li><b>Motion and fold angle</b>: Some games read the device’s tilt, or the hinge angle of iPhone Duo, as game input. These values are used on the device in real time. They are not stored and never leave the device.</li>
@@ -114,14 +117,14 @@
     <h3>We do not</h3>
     <ul>
       <li>Create accounts or ask for personal details such as your name, email address or phone number.</li>
-      <li>Upload your data to developer-run servers (the iOS version uses none; on Android only the online play described above uses Firebase).</li>
+      <li>Upload your data to developer-run servers (only the online play described above uses Firebase).</li>
       <li>Use the camera, microphone, photos, contacts or precise location.</li>
       <li>Send push notifications.</li>
     </ul>
 
     <h3>Retention and deletion</h3>
     <ul>
-      <li>Deleting the App removes the game records and settings stored on your device.</li>
+      <li>Deleting the App removes the game records, settings and nickname stored on your device. Data in an online room is removed when you leave.</li>
       <li>Leaderboard scores are kept by Apple’s Game Center and can be managed in iOS Settings ▸ Game Center.</li>
       <li>Advertising data is retained and processed by Google under its privacy policy.</li>
     </ul>
@@ -129,10 +132,11 @@
     <h3>Third-party services</h3>
     <ul>
       <li>Google Mobile Ads SDK (ad delivery and measurement) — <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
-      <li>Apple Game Center / GameKit (leaderboards and online matches)</li>
+      <li>Apple Game Center / GameKit (leaderboards)</li>
       <li>Apple Intelligence (short generated lines in games)</li>
       <li>Apple App Store (in-app purchase)</li>
-      <li>Google Firebase (online play on Android) — <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a></li>
+      <li>Apple App Attest (confirms the genuine App during online play)</li>
+      <li>Google Firebase (online play) — <a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a></li>
       <li>Google Play (in-app purchase on Android)</li>
       <li>Google Play Games (leaderboards on Android)</li>
     </ul>
