@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-language" content="zh-Hant, en" />
+  <title>不摺手段 支援 Fold Club Support</title>
+  <meta name="description" content="不摺手段 Fold Club 的支援與常見問題。Fold Club support and FAQ." />
+  <link rel="icon" type="image/png" href="fold-club/icon.png" />
+  <link rel="apple-touch-icon" href="fold-club/apple-touch-icon.png" />
+  <style>
+    :root{
+      --paper:#F2E8D5;--card:#FFF9EC;--ink:#1C1915;--muted:#6B6257;
+      --vermilion:#D63E2A;--mustard:#E3A82B;--petrol:#2B6787;--bottle:#1F5C4A;
+      --line:#1C1915;--shadow:#1C1915;--dot:rgba(28,25,21,.07);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{--paper:#17140F;--card:#221E18;--ink:#F2E8D5;--muted:#B5AA98;--line:#F2E8D5;--shadow:#000;--dot:rgba(242,232,213,.06)}
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:22px 22px;color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+    .muted{color:var(--muted)}
+
+    /* 中英切換 */
+    .i18n{display:none}
+    html[lang="zh-Hant"] .i18n.zh{display:revert}
+    html[lang="en"] .i18n.en{display:revert}
+    html[lang="zh-Hant"] .gp.zh,html[lang="en"] .gp.en{display:inline-block}
+
+    /* 上面那條 */
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none}
+    .brand img{width:36px;height:36px;border-radius:9px;border:2px solid var(--line)}
+    .topright{display:flex;align-items:center;gap:14px}
+    .helplink{font-weight:800;font-size:15px}
+    .langbar{display:flex;gap:6px}
+    .langbar button{appearance:none;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:700;padding:4px 12px;border-radius:999px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+    /* 開頭 */
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;padding:24px 0 8px}
+    @media (min-width:860px){.hero{grid-template-columns:1.05fr 1fr;padding-top:40px}}
+    .icon{width:112px;height:112px;border-radius:26px;border:3px solid var(--line);box-shadow:6px 8px 0 var(--shadow);transform:rotate(-4deg)}
+    h1{font-size:clamp(44px,9vw,76px);line-height:1.05;margin:22px 0 6px;letter-spacing:.04em;font-weight:900}
+    .tag{font-size:clamp(22px,4.4vw,30px);font-weight:800;color:var(--vermilion);margin:0 0 12px}
+    .lede{font-size:18px;margin:0 0 22px;max-width:34em}
+    .badges{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
+    .badges a{display:inline-flex;line-height:0;border-radius:10px;transition:transform .15s}
+    .badges a:hover{transform:translateY(-2px)}
+    /* 兩個標章看得到的部分都是 56px 高。Google 的圖（646×250）四周有透明邊，
+       放大後用外框裁掉：中文版上下各 29px（看得到 192px），英文版四邊各 41px（看得到 564×168） */
+    .badges{--bh:56px}
+    @media (max-width:420px){.badges{--bh:50px;gap:12px 14px}}
+    .badges img.apple{height:var(--bh);width:auto}
+    .badges .gp{height:var(--bh);overflow:hidden;border-radius:9px}
+    .badges .gp.zh img{height:calc(var(--bh) / .768);width:auto;margin-top:calc(var(--bh) * -.151)}
+    .badges .gp.en{width:calc(var(--bh) * 3.357)}
+    .badges .gp.en img{height:calc(var(--bh) / .672);width:auto;margin:calc(var(--bh) * -.244) 0 0 calc(var(--bh) * -.244)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+    .chips li{border:2px solid var(--line);border-radius:999px;padding:2px 12px;font-size:14px;font-weight:700;background:var(--card)}
+    .art{border:3px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:8px 10px 0 var(--shadow);background:#F2E8D5;transform:rotate(1.2deg)}
+    .art img{display:block;width:100%;height:auto}
+
+    /* 區塊 */
+    section{padding:44px 0 8px}
+    section.first{padding-top:20px}
+    section.shots{padding-top:36px}
+
+    /* 宣傳片：電腦看橫的、手機看直的（沒顯示的那支不會下載） */
+    .promo{padding-top:48px}
+    .promo video,.duo-video{display:block;width:100%;height:auto;border:3px solid var(--line);border-radius:22px;box-shadow:8px 10px 0 var(--shadow);background:#F2E8D5}
+    .promo .tall{display:none}
+    @media (max-width:640px){
+      .promo .wide{display:none}
+      .promo .tall{display:block;width:auto;max-width:100%;max-height:86vh;margin:0 auto}
+    }
+    .duo-video{margin-top:16px;border-radius:16px;box-shadow:5px 7px 0 var(--shadow)}
+    h2{font-size:clamp(26px,5vw,36px);line-height:1.2;margin:0 0 18px;font-weight:900}
+    h2 .bar{display:inline-block;width:34px;height:7px;border-radius:4px;background:var(--vermilion);vertical-align:middle;margin-right:10px;transform:translateY(-3px)}
+
+    /* 截圖：橫向滑 */
+    .gallery{gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin:0 -16px;-webkit-overflow-scrolling:touch}
+    html[lang="zh-Hant"] .gallery.zh,html[lang="en"] .gallery.en{display:flex}
+    .gallery img{height:min(62vh,520px);width:auto;flex:none;scroll-snap-align:center;border-radius:18px;border:3px solid var(--line);box-shadow:5px 7px 0 var(--shadow);background:#F2E8D5}
+
+    /* 玩什麼 */
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:3px solid var(--line);border-radius:20px;padding:20px 22px;box-shadow:5px 7px 0 var(--shadow)}
+    .card h3{margin:0 0 8px;font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+    .card h3 .dot{width:14px;height:14px;border-radius:4px;border:2px solid var(--line);flex:none}
+    .card p,.card ul{margin:0}
+    .card ul{padding-left:1.1em}
+    .card li{margin:2px 0}
+    .wide{grid-column:1/-1}
+    .pro{background:var(--ink);color:var(--paper)}
+    .pro h3 .dot{border-color:var(--paper)}
+
+    /* 支援 */
+    .contact{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+    .contact p{margin:0}
+    .mail{display:inline-block;font-weight:800;font-size:18px;text-decoration:none;border:3px solid #1C1915;border-radius:999px;padding:6px 18px;background:var(--mustard);color:#1C1915;box-shadow:4px 5px 0 var(--shadow);overflow-wrap:anywhere}
+    .faq-title{margin:28px 0 4px;font-size:21px}
+    details{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 18px;margin:12px 0}
+    summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"＋";font-weight:900;flex:none}
+    details[open] summary::after{content:"－"}
+    details p{margin:10px 0 2px}
+
+    footer{padding:40px 0 48px;font-size:14px}
+    footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:12px;font-weight:700}
+    footer small{color:var(--muted);line-height:1.6}
+    footer small:not(.i18n), html[lang="zh-Hant"] footer small.zh, html[lang="en"] footer small.en{display:block}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top" id="top">
+      <a class="brand" href="fold-club-support.html">
+        <img src="fold-club/icon.png" alt="" width="36" height="36" />
+        <span><span class="i18n zh">不摺手段</span><span class="i18n en">Fold Club</span></span>
+      </a>
+      <div class="topright">
+      <a class="helplink" href="fold-club-support.html"><span class="i18n zh">回介紹頁</span><span class="i18n en">About the app</span></a>
+      <div class="langbar" role="group" aria-label="Language">
+        <button id="btn-zh" type="button" aria-pressed="true">中文</button>
+        <button id="btn-en" type="button" aria-pressed="false">English</button>
+      </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="first" id="support" aria-labelledby="h-support">
+        <h2 id="h-support"><span class="bar"></span><span class="i18n zh">支援</span><span class="i18n en">Support</span></h2>
+        <div class="card contact">
+          <p>
+            <span class="i18n zh">需要協助、回報問題，或想許願新遊戲，請來信：</span>
+            <span class="i18n en">Need help, found a bug, or have a game you'd like to see? Email us:</span>
+          </p>
+          <a class="mail" href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a>
+        </div>
+
+        <h3 class="faq-title"><span class="i18n zh">常見問題</span><span class="i18n en">FAQ</span></h3>
+
+        <details>
+          <summary><span class="i18n zh">一定要有摺疊機才能玩嗎？</span><span class="i18n en">Do I need a foldable phone?</span></summary>
+          <p class="i18n zh">不用。一般手機和 iPad 都能玩大部分的遊戲；只有幾款用到摺疊角度的遊戲要在摺得起來的手機上玩，在其他裝置上會放在大廳最下面。</p>
+          <p class="i18n en">No. Most games play on any phone or iPad. Only the few games that use the hinge angle need a foldable; on other devices they're listed at the bottom of the lobby.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">Pro 包含什麼？</span><span class="i18n en">What does Pro include?</span></summary>
+          <p class="i18n zh">一次買斷（不是訂閱）：解鎖 Pro 限定的遊戲和連線對戰，並拿掉大廳裡的廣告。在 App Store 購買支援家人共享，同一個 Apple 帳號的 Apple Watch 也會一起解鎖。</p>
+          <p class="i18n en">A one-time purchase (not a subscription) that unlocks the Pro-only games and online play, and removes the ads in the lobby. Purchases on the App Store support Family Sharing and also unlock on an Apple Watch using the same Apple Account.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">買過了但還是鎖著？</span><span class="i18n en">I bought Pro but games are still locked.</span></summary>
+          <p class="i18n zh">到購買畫面點「回復購買」。請確認裝置登入的是購買時的帳號（iPhone、iPad 是 Apple 帳號，Android 是 Google 帳號），並且連得上網路。</p>
+          <p class="i18n en">Open the purchase screen and tap “Restore purchase”. Make sure the device is signed in to the account you bought it with (your Apple Account on iPhone and iPad, your Google account on Android) and is online.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">怎麼跟朋友連線對戰？</span><span class="i18n en">How do I play online with friends?</span></summary>
+          <p class="i18n zh">在大廳右上角點雙人圖示，開一桌拿到四位數房號，朋友在同一頁輸入房號就能加入。2 到 4 人一桌，主揪點遊戲；只有每個人都玩得了的遊戲會出現在清單裡。連線對戰是 Pro 的功能，要加入的每個人都需要 Pro。</p>
+          <p class="i18n en">Tap the two-people icon at the top right of the lobby and open a table to get a four-digit room code. Friends enter the code on the same screen to join. A table seats 2 to 4 players and the host picks the game; only games everyone at the table can play are listed. Online play is part of Pro, so everyone who joins needs Pro.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">排行榜在哪裡看？</span><span class="i18n en">Where are the leaderboards?</span></summary>
+          <p class="i18n zh">每款遊戲都有排行榜：iPhone、iPad 用 Game Center，Android 用 Google Play 遊戲。</p>
+          <p class="i18n en">Every game has a leaderboard: Game Center on iPhone and iPad, Google Play Games on Android.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">會顯示廣告嗎？</span><span class="i18n en">Does the app show ads?</span></summary>
+          <p class="i18n zh">免費版只在大廳的遊戲清單裡顯示廣告，遊戲進行中沒有；購買 Pro 後不再顯示。</p>
+          <p class="i18n en">The free version shows ads only in the game list in the lobby, never during a game. Ads are removed after you buy Pro.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">彈珠台一直偏一邊？</span><span class="i18n en">The pinball keeps drifting to one side.</span></summary>
+          <p class="i18n zh">彈珠台會跟著手機傾斜。想固定的話，在遊戲畫面把「會傾斜」切成「不傾斜」。</p>
+          <p class="i18n en">The table follows the tilt of your phone. To keep it level, switch “Tilt on” to “Tilt off” on the game screen.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="fold-club-support.html"><span class="i18n zh">不摺手段介紹</span><span class="i18n en">About Fold Club</span></a>
+        <a href="fold-club-privacy-policy.html"><span class="i18n zh">隱私權政策</span><span class="i18n en">Privacy Policy</span></a>
+        <a href="https://apps.apple.com/app/id6833069611">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=tw.puyan.foldclub">Google Play</a>
+      </div>
+      <small>© 2026 Puyan Lin</small>
+      <small class="i18n zh">Apple、Apple 標誌、iPhone、iPad 和 Apple Watch 是 Apple Inc. 在美國及其他國家和地區註冊的商標；App Store 是 Apple Inc. 的服務標誌。Google Play 和 Google Play 標誌是 Google LLC 的商標。</small>
+      <small class="i18n en">Apple, the Apple logo, iPhone, iPad, and Apple Watch are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</small>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'fold_club_lang';
+      var zhBtn = document.getElementById('btn-zh');
+      var enBtn = document.getElementById('btn-en');
+      function setLang(lang) {
+        document.documentElement.setAttribute('lang', lang);
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+        var zh = lang.indexOf('zh') === 0;
+        zhBtn.setAttribute('aria-pressed', String(zh));
+        enBtn.setAttribute('aria-pressed', String(!zh));
+        document.title = zh ? '不摺手段 支援' : 'Fold Club Support';
+      }
+      zhBtn.addEventListener('click', function () { setLang('zh-Hant'); });
+      enBtn.addEventListener('click', function () { setLang('en'); });
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      if (saved) { setLang(saved); }
+      else {
+        var nav = (navigator.language || '').toLowerCase();
+        setLang(nav.indexOf('zh') === 0 ? 'zh-Hant' : 'en');
+      }
+    })();
+  </script>
+</body>
+</html>
