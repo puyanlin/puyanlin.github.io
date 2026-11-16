@@ -66,6 +66,16 @@
     /* 區塊 */
     section{padding:44px 0 8px}
     section.shots{padding-top:36px}
+
+    /* 宣傳片：電腦看橫的、手機看直的（沒顯示的那支不會下載） */
+    .promo{padding-top:48px}
+    .promo video,.duo-video{display:block;width:100%;height:auto;border:3px solid var(--line);border-radius:22px;box-shadow:8px 10px 0 var(--shadow);background:#F2E8D5}
+    .promo .tall{display:none}
+    @media (max-width:640px){
+      .promo .wide{display:none}
+      .promo .tall{display:block;width:auto;max-width:100%;max-height:86vh;margin:0 auto}
+    }
+    .duo-video{margin-top:16px;border-radius:16px;box-shadow:5px 7px 0 var(--shadow)}
     h2{font-size:clamp(26px,5vw,36px);line-height:1.2;margin:0 0 18px;font-weight:900}
     h2 .bar{display:inline-block;width:34px;height:7px;border-radius:4px;background:var(--vermilion);vertical-align:middle;margin-right:10px;transform:translateY(-3px)}
 
@@ -146,6 +156,15 @@
         <div class="art"><img src="fold-club/hero.jpg" alt="" width="1600" height="900" /></div>
       </div>
 
+      <section class="promo" aria-label="宣傳影片 Video">
+        <video class="wide" controls playsinline preload="none" poster="fold-club/video/crossplay-16x9.jpg" width="1280" height="720">
+          <source src="fold-club/video/crossplay-16x9.mp4" type="video/mp4" />
+        </video>
+        <video class="tall" controls playsinline preload="none" poster="fold-club/video/crossplay-9x16.jpg" width="720" height="1280">
+          <source src="fold-club/video/crossplay-9x16.mp4" type="video/mp4" />
+        </video>
+      </section>
+
       <section class="shots" aria-label="截圖 Screenshots">
         <div class="gallery i18n zh">
           <img src="fold-club/shots/zh/1.jpg" alt="大廳" loading="lazy" />
@@ -221,6 +240,14 @@
             <h3><span class="dot" style="background:var(--petrol)"></span><span class="i18n zh">揪人尬一場</span><span class="i18n en">Play online</span></h3>
             <p class="i18n zh">開一桌拿四位數房號，朋友輸入房號進來，2 到 4 個人湊一桌。主揪點遊戲，大家玩一模一樣的關卡，分數最高的拿一勝。不管朋友用哪一種手機，都能進同一桌。每款遊戲都有排行榜。</p>
             <p class="i18n en">Open a table, share the four-digit room code, and 2 to 4 players join. The host picks a game, everyone plays the exact same level, and the top score takes the round. Whatever phone your friends have, they can join the same table. Every game has its own leaderboard.</p>
+          </div>
+          <div class="card wide">
+            <h3><span class="dot" style="background:var(--bottle)"></span><span class="i18n zh">雙面貪食蛇</span><span class="i18n en">Two-sided Snake</span></h3>
+            <p class="i18n zh">在摺疊機上，闔上手機，蛇就從內螢幕鑽到外螢幕；打開，又鑽回草地。沒有摺疊機也能玩：一般手機鑽進洞，木盤自己翻面。</p>
+            <p class="i18n en">On a foldable, fold shut and the snake burrows from the inner screen to the outer one; open up and it pops back onto the grass. No foldable? On a regular phone it dives into a hole and the board flips over by itself.</p>
+            <video class="duo-video" controls playsinline preload="none" poster="fold-club/video/duo-snake-16x9.jpg" width="1280" height="720">
+              <source src="fold-club/video/duo-snake-16x9.mp4" type="video/mp4" />
+            </video>
           </div>
           <div class="card pro wide">
             <h3><span class="dot" style="background:var(--mustard)"></span>Pro</h3>
