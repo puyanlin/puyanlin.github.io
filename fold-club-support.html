@@ -4,122 +4,344 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="content-language" content="zh-Hant, en" />
-  <title>不摺手段 Fold Club 支援 Support</title>
+  <title>不摺手段 Fold Club</title>
+  <meta name="description" content="不摺手段 Fold Club：開在手機裡的小遊藝場，十幾款兩三分鐘一局的小遊戲，摺疊機更好玩，還能揪朋友連線尬一場。A pocket arcade of quick minigames, even better on a foldable phone." />
+  <meta name="apple-itunes-app" content="app-id=6833069611" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="不摺手段 Fold Club" />
+  <meta property="og:description" content="下班了，來一局。十幾款兩三分鐘一局的小遊戲，摺疊機更好玩。" />
+  <meta property="og:image" content="https://puyanlin.github.io/fold-club/hero.jpg" />
+  <meta property="og:url" content="https://puyanlin.github.io/fold-club-support.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="fold-club/icon.png" />
+  <link rel="apple-touch-icon" href="fold-club/apple-touch-icon.png" />
   <style>
-    :root{--bg:#ffffff;--fg:#111;--muted:#666;--card:#f6f7f8;--border:#e5e7eb}
-    @media (prefers-color-scheme: dark){
-      :root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--card:#0f141a;--border:#223}
+    :root{
+      --paper:#F2E8D5;--card:#FFF9EC;--ink:#1C1915;--muted:#6B6257;
+      --vermilion:#D63E2A;--mustard:#E3A82B;--petrol:#2B6787;--bottle:#1F5C4A;
+      --line:#1C1915;--shadow:#1C1915;--dot:rgba(28,25,21,.07);
     }
-    html,body{background:var(--bg);color:var(--fg)}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;line-height:1.65;margin:24px;max-width:900px}
-    h1,h2{line-height:1.25}
-    .muted{color:var(--muted);font-weight:normal}
-    .card{background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+    @media (prefers-color-scheme: dark){
+      :root{--paper:#17140F;--card:#221E18;--ink:#F2E8D5;--muted:#B5AA98;--line:#F2E8D5;--shadow:#000;--dot:rgba(242,232,213,.06)}
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;background-color:var(--paper);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px);background-size:22px 22px;color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.7}
     a{color:inherit}
-    /* Language switcher */
-    .langbar{display:flex;gap:8px;justify-content:flex-end;align-items:center;margin-bottom:12px}
-    .langbar button{appearance:none;border:1px solid var(--border);background:transparent;color:var(--fg);padding:6px 10px;border-radius:10px;cursor:pointer}
-    .langbar button[aria-pressed="true"]{border-color:var(--fg);font-weight:600}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+    .muted{color:var(--muted)}
 
-    /* i18n visibility rules */
+    /* 中英切換 */
     .i18n{display:none}
-    html[lang="zh-Hant"] .i18n.zh{display:block}
-    html[lang="en"] .i18n.en{display:block}
+    html[lang="zh-Hant"] .i18n.zh{display:revert}
+    html[lang="en"] .i18n.en{display:revert}
+
+    /* 上面那條 */
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none}
+    .brand img{width:36px;height:36px;border-radius:9px;border:2px solid var(--line)}
+    .langbar{display:flex;gap:6px}
+    .langbar button{appearance:none;border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;font-weight:700;padding:4px 12px;border-radius:999px;cursor:pointer}
+    .langbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+    /* 開頭 */
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;padding:24px 0 8px}
+    @media (min-width:860px){.hero{grid-template-columns:1.05fr 1fr;padding-top:40px}}
+    .icon{width:112px;height:112px;border-radius:26px;border:3px solid var(--line);box-shadow:6px 8px 0 var(--shadow);transform:rotate(-4deg)}
+    h1{font-size:clamp(44px,9vw,76px);line-height:1.05;margin:22px 0 6px;letter-spacing:.04em;font-weight:900}
+    .tag{font-size:clamp(22px,4.4vw,30px);font-weight:800;color:var(--vermilion);margin:0 0 12px}
+    .lede{font-size:18px;margin:0 0 22px;max-width:34em}
+    .badges{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
+    .badges a{display:inline-flex;line-height:0;border-radius:10px;transition:transform .15s}
+    .badges a:hover{transform:translateY(-2px)}
+    .badges img.apple{height:56px;width:auto}
+    /* Google 的標章圖四周有留白，放大一點、用負邊距抵掉，看起來才跟 Apple 的一樣大 */
+    .badges img.google{height:80px;width:auto;margin:-13px -10px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+    .chips li{border:2px solid var(--line);border-radius:999px;padding:2px 12px;font-size:14px;font-weight:700;background:var(--card)}
+    .art{border:3px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:8px 10px 0 var(--shadow);background:#F2E8D5;transform:rotate(1.2deg)}
+    .art img{display:block;width:100%;height:auto}
+
+    /* 區塊 */
+    section{padding:44px 0 8px}
+    section.shots{padding-top:36px}
+
+    /* 宣傳片：電腦看橫的、手機看直的（沒顯示的那支不會下載） */
+    .promo{padding-top:48px}
+    .promo video,.duo-video{display:block;width:100%;height:auto;border:3px solid var(--line);border-radius:22px;box-shadow:8px 10px 0 var(--shadow);background:#F2E8D5}
+    .promo .tall{display:none}
+    @media (max-width:640px){
+      .promo .wide{display:none}
+      .promo .tall{display:block;width:auto;max-width:100%;max-height:86vh;margin:0 auto}
+    }
+    .duo-video{margin-top:16px;border-radius:16px;box-shadow:5px 7px 0 var(--shadow)}
+    h2{font-size:clamp(26px,5vw,36px);line-height:1.2;margin:0 0 18px;font-weight:900}
+    h2 .bar{display:inline-block;width:34px;height:7px;border-radius:4px;background:var(--vermilion);vertical-align:middle;margin-right:10px;transform:translateY(-3px)}
+
+    /* 截圖：橫向滑 */
+    .gallery{gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin:0 -16px;-webkit-overflow-scrolling:touch}
+    html[lang="zh-Hant"] .gallery.zh,html[lang="en"] .gallery.en{display:flex}
+    .gallery img{height:min(62vh,520px);width:auto;flex:none;scroll-snap-align:center;border-radius:18px;border:3px solid var(--line);box-shadow:5px 7px 0 var(--shadow);background:#F2E8D5}
+
+    /* 玩什麼 */
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media (min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:3px solid var(--line);border-radius:20px;padding:20px 22px;box-shadow:5px 7px 0 var(--shadow)}
+    .card h3{margin:0 0 8px;font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px}
+    .card h3 .dot{width:14px;height:14px;border-radius:4px;border:2px solid var(--line);flex:none}
+    .card p,.card ul{margin:0}
+    .card ul{padding-left:1.1em}
+    .card li{margin:2px 0}
+    .wide{grid-column:1/-1}
+    .pro{background:var(--ink);color:var(--paper)}
+    .pro h3 .dot{border-color:var(--paper)}
+
+    /* 支援 */
+    .contact{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+    .contact p{margin:0}
+    .mail{display:inline-block;font-weight:800;font-size:18px;text-decoration:none;border:3px solid #1C1915;border-radius:999px;padding:6px 18px;background:var(--mustard);color:#1C1915;box-shadow:4px 5px 0 var(--shadow);overflow-wrap:anywhere}
+    .faq-title{margin:28px 0 4px;font-size:21px}
+    details{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 18px;margin:12px 0}
+    summary{cursor:pointer;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"＋";font-weight:900;flex:none}
+    details[open] summary::after{content:"－"}
+    details p{margin:10px 0 2px}
+
+    footer{padding:40px 0 48px;font-size:14px}
+    footer .links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:12px;font-weight:700}
+    footer small{color:var(--muted);line-height:1.6}
+    footer small:not(.i18n), html[lang="zh-Hant"] footer small.zh, html[lang="en"] footer small.en{display:block}
   </style>
 </head>
 <body>
-  <div class="langbar" role="group" aria-label="Language">
-    <span class="muted">Language</span>
-    <button id="btn-zh" type="button" data-lang="zh-Hant" aria-pressed="true">中文</button>
-    <button id="btn-en" type="button" data-lang="en" aria-pressed="false">English</button>
-  </div>
+  <div class="wrap">
+    <header class="top" id="top">
+      <a class="brand" href="#top">
+        <img src="fold-club/icon.png" alt="" width="36" height="36" />
+        <span><span class="i18n zh">不摺手段</span><span class="i18n en">Fold Club</span></span>
+      </a>
+      <div class="langbar" role="group" aria-label="Language">
+        <button id="btn-zh" type="button" aria-pressed="true">中文</button>
+        <button id="btn-en" type="button" aria-pressed="false">English</button>
+      </div>
+    </header>
 
-  <h1>
-    <span class="i18n zh">不摺手段 支援 <span class="muted">Support</span></span>
-    <span class="i18n en">Fold Club <span class="muted">Support</span></span>
-  </h1>
+    <main>
+      <div class="hero">
+        <div>
+          <img class="icon" src="fold-club/icon.png" alt="不摺手段 Fold Club" width="112" height="112" />
+          <h1><span class="i18n zh">不摺手段</span><span class="i18n en">Fold Club</span></h1>
+          <p class="tag"><span class="i18n zh">下班了，來一局。</span><span class="i18n en">Clocked out? One quick round.</span></p>
+          <p class="lede">
+            <span class="i18n zh">開在手機裡的小遊藝場：十幾款兩三分鐘就能分出高下的小遊戲，一個人殺時間、一群人拚輸贏都行。摺疊機更好玩。</span>
+            <span class="i18n en">A pocket arcade: a dozen-plus minigames that are over in two or three minutes. Kill time on your own, or settle the score with friends. Even better on a foldable.</span>
+          </p>
+          <div class="badges">
+            <a href="https://apps.apple.com/app/id6833069611" aria-label="App Store">
+              <img class="apple i18n zh" src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/zh-tw" alt="在 App Store 下載" />
+              <img class="apple i18n en" src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=tw.puyan.foldclub" aria-label="Google Play">
+              <img class="google i18n zh" src="https://play.google.com/intl/en_us/badges/static/images/badges/zh-tw_badge_web_generic.png" alt="立即下載 Google Play" />
+              <img class="google i18n en" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+            </a>
+          </div>
+          <ul class="chips">
+            <li>iPhone</li><li>iPad</li><li>Apple Watch</li><li>Android</li>
+            <li><span class="i18n zh">免費下載</span><span class="i18n en">Free to download</span></li>
+          </ul>
+        </div>
+        <div class="art"><img src="fold-club/hero.jpg" alt="" width="1600" height="900" /></div>
+      </div>
 
-  <div class="card">
-    <h2>
-      <span class="i18n zh">聯絡我們 Contact</span>
-      <span class="i18n en">Contact</span>
-    </h2>
-    <p class="i18n zh">感謝您使用《不摺手段》！需要協助、回報問題或想許願新遊戲，請來信：</p>
-    <p class="i18n en">Thanks for playing Fold Club! If you need help, want to report an issue, or have a game you would like to see, please email us:</p>
-    <p><b>Email：</b> <a href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a></p>
-  </div>
+      <section class="promo" aria-label="宣傳影片 Video">
+        <video class="wide" controls playsinline preload="none" poster="fold-club/video/crossplay-16x9.jpg" width="1280" height="720">
+          <source src="fold-club/video/crossplay-16x9.mp4" type="video/mp4" />
+        </video>
+        <video class="tall" controls playsinline preload="none" poster="fold-club/video/crossplay-9x16.jpg" width="720" height="1280">
+          <source src="fold-club/video/crossplay-9x16.mp4" type="video/mp4" />
+        </video>
+      </section>
 
-  <div class="card">
-    <h2>
-      <span class="i18n zh">常見問題 FAQ</span>
-      <span class="i18n en">FAQ</span>
-    </h2>
-    <ul>
-      <li class="i18n zh"><b>一定要有 iPhone Duo 才能玩嗎？</b> 不用。一般 iPhone、iPad 都能玩大部分的遊戲；只有幾款用到摺疊角度的遊戲需要 iPhone Duo，在其他裝置上會另外放在「摺疊機限定」一區。</li>
-      <li class="i18n en"><b>Do I need an iPhone Duo?</b> No. Most games work on any iPhone or iPad. Only the few games that use the hinge angle need an iPhone Duo; on other devices they are listed in a separate “Foldable only” section.</li>
+      <section class="shots" aria-label="截圖 Screenshots">
+        <div class="gallery i18n zh">
+          <img src="fold-club/shots/zh/1.jpg" alt="大廳" loading="lazy" />
+          <img src="fold-club/shots/zh/2.jpg" alt="夾娃娃機" loading="lazy" />
+          <img src="fold-club/shots/zh/3.jpg" alt="夜市彈珠台" loading="lazy" />
+          <img src="fold-club/shots/zh/8.jpg" alt="貪食蛇" loading="lazy" />
+          <img src="fold-club/shots/zh/4.jpg" alt="找碴" loading="lazy" />
+          <img src="fold-club/shots/zh/5.jpg" alt="吧台滑杯" loading="lazy" />
+          <img src="fold-club/shots/zh/6.jpg" alt="趕打卡" loading="lazy" />
+          <img src="fold-club/shots/zh/7.jpg" alt="老闆來了" loading="lazy" />
+        </div>
+        <div class="gallery i18n en">
+          <img src="fold-club/shots/en/1.jpg" alt="Lobby" loading="lazy" />
+          <img src="fold-club/shots/en/2.jpg" alt="Claw Machine" loading="lazy" />
+          <img src="fold-club/shots/en/3.jpg" alt="Night Pinball" loading="lazy" />
+          <img src="fold-club/shots/en/8.jpg" alt="Snake" loading="lazy" />
+          <img src="fold-club/shots/en/4.jpg" alt="Spot the Swap" loading="lazy" />
+          <img src="fold-club/shots/en/5.jpg" alt="Bar Slide" loading="lazy" />
+          <img src="fold-club/shots/en/6.jpg" alt="Clock-In Dash" loading="lazy" />
+          <img src="fold-club/shots/en/7.jpg" alt="Boss Alert" loading="lazy" />
+        </div>
+      </section>
 
-      <li class="i18n zh"><b>Pro 包含什麼？</b> 一次買斷（不是訂閱）：解鎖標示 Pro 的遊戲，並拿掉大廳裡的廣告。支援家人共享，Apple Watch 上同一個 Apple 帳號也會一起解鎖。</li>
-      <li class="i18n en"><b>What does Pro include?</b> A one-time purchase (not a subscription) that unlocks the games marked Pro and removes the ads in the lobby. It supports Family Sharing, and also unlocks on an Apple Watch using the same Apple Account.</li>
+      <section aria-labelledby="h-games">
+        <h2 id="h-games"><span class="bar"></span><span class="i18n zh">玩什麼</span><span class="i18n en">What's in the arcade</span></h2>
+        <div class="grid">
+          <div class="card">
+            <h3><span class="dot" style="background:var(--vermilion)"></span><span class="i18n zh">立體的機台</span><span class="i18n en">Chunky 3D machines</span></h3>
+            <ul class="i18n zh">
+              <li>夾娃娃機：五枚硬幣，看準影子再下爪。</li>
+              <li>夜市彈珠台：把手機歪一邊，彈珠真的會跟著偏。</li>
+              <li>吧台滑杯：一推，停得離杯墊越近越高分。</li>
+              <li>疊啤酒箱、趕打卡、老闆來了……每一台都是看得出厚度的 3D 小模型。</li>
+            </ul>
+            <ul class="i18n en">
+              <li>Claw Machine: five coins. Line up the shadow, then drop.</li>
+              <li>Night Pinball: tilt your phone and the marble really drifts.</li>
+              <li>Bar Slide: push the mug and stop it closest to the coaster.</li>
+              <li>Crate Stacker, Clock-In Dash, Boss Alert… every cabinet is a little 3D model.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot" style="background:var(--mustard)"></span><span class="i18n zh">考眼力、考手速</span><span class="i18n en">Sharp eyes, fast hands</span></h3>
+            <ul class="i18n zh">
+              <li>找碴：兩個櫃子，哪裡不一樣？</li>
+              <li>點鈔機：一疊鈔票混著假貨，十五秒數對幾張。</li>
+              <li>下班打磚塊、打小人：把待辦和討厭鬼一口氣清掉。</li>
+              <li>藍白拖打蟑螂：地上的拖鞋拍下去，飛起來的趕快擊落。</li>
+            </ul>
+            <ul class="i18n en">
+              <li>Spot the Swap: two cabinets. What changed?</li>
+              <li>Cash Counter: fakes in the stack. How many can you count in fifteen seconds?</li>
+              <li>To-Do Smasher and Whack a Jerk: clear out today's to-dos, and today's jerks.</li>
+              <li>Slipper vs. Roaches: a slipper for the ones on the floor, a swat for the ones that fly.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot" style="background:var(--bottle)"></span><span class="i18n zh">摺疊機更好玩</span><span class="i18n en">Better on a foldable</span></h3>
+            <ul class="i18n zh">
+              <li>角度大師：說 87 度就 87 度，憑手感摺到指定角度。</li>
+              <li>拍蚊子：蚊子停下來的那一瞬間，把手機闔上，啪。</li>
+              <li>貪食蛇：內外螢幕各是一面，闔上手機，蛇就鑽到另一面。</li>
+              <li>半開立在桌上時，畫面會避開摺線。一般手機也能玩其餘所有遊戲。</li>
+            </ul>
+            <ul class="i18n en">
+              <li>Angle Master: asked for 87 degrees? Fold to exactly that, by feel.</li>
+              <li>Mosquito Clap: the moment it lands, snap your phone shut.</li>
+              <li>Snake: one side on each screen. Fold shut and the snake burrows through.</li>
+              <li>Half open on a table, the screen splits around the hinge. Every other game plays on any regular phone.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><span class="dot" style="background:var(--petrol)"></span><span class="i18n zh">揪人尬一場</span><span class="i18n en">Play online</span></h3>
+            <p class="i18n zh">開一桌拿四位數房號，朋友輸入房號進來，2 到 4 個人湊一桌。主揪點遊戲，大家玩一模一樣的關卡，分數最高的拿一勝。不管朋友用哪一種手機，都能進同一桌。每款遊戲都有排行榜。</p>
+            <p class="i18n en">Open a table, share the four-digit room code, and 2 to 4 players join. The host picks a game, everyone plays the exact same level, and the top score takes the round. Whatever phone your friends have, they can join the same table. Every game has its own leaderboard.</p>
+          </div>
+          <div class="card wide">
+            <h3><span class="dot" style="background:var(--bottle)"></span><span class="i18n zh">雙面貪食蛇</span><span class="i18n en">Two-sided Snake</span></h3>
+            <p class="i18n zh">在摺疊機上，闔上手機，蛇就從內螢幕鑽到外螢幕；打開，又鑽回草地。沒有摺疊機也能玩：一般手機鑽進洞，木盤自己翻面。</p>
+            <p class="i18n en">On a foldable, fold shut and the snake burrows from the inner screen to the outer one; open up and it pops back onto the grass. No foldable? On a regular phone it dives into a hole and the board flips over by itself.</p>
+            <video class="duo-video" controls playsinline preload="none" poster="fold-club/video/duo-snake-16x9.jpg" width="1280" height="720">
+              <source src="fold-club/video/duo-snake-16x9.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="card pro wide">
+            <h3><span class="dot" style="background:var(--mustard)"></span>Pro</h3>
+            <p class="i18n zh">免費下載就能玩大部分的遊戲。一次買斷的 Pro（不是訂閱）解鎖 Pro 限定的遊戲與連線對戰，並拿掉大廳的廣告。</p>
+            <p class="i18n en">Free to download, with most games ready to play. Pro is a one-time purchase (not a subscription) that unlocks the Pro-only games and online play, and removes the ads in the lobby.</p>
+          </div>
+        </div>
+      </section>
 
-      <li class="i18n zh"><b>買過了但還是鎖著？</b> 到購買畫面點「回復購買」。請確認裝置登入的是購買時的 Apple 帳號，並且連得上網路。</li>
-      <li class="i18n en"><b>I bought Pro but games are still locked.</b> Open the purchase screen and tap “Restore purchase”. Make sure the device is signed in to the Apple Account used for the purchase and is online.</li>
+      <section id="support" aria-labelledby="h-support">
+        <h2 id="h-support"><span class="bar"></span><span class="i18n zh">支援</span><span class="i18n en">Support</span></h2>
+        <div class="card contact">
+          <p>
+            <span class="i18n zh">需要協助、回報問題，或想許願新遊戲，請來信：</span>
+            <span class="i18n en">Need help, found a bug, or have a game you'd like to see? Email us:</span>
+          </p>
+          <a class="mail" href="mailto:puyan.tw@icloud.com">puyan.tw@icloud.com</a>
+        </div>
 
-      <li class="i18n zh"><b>怎麼跟朋友連線對戰？</b> 兩台以上的裝置都登入 Game Center，在大廳點連線對戰、找對手或邀請朋友。2 到 4 人一桌，由主揪選遊戲；只有每個人都玩得了的遊戲會出現在清單裡。</li>
-      <li class="i18n en"><b>How do I play online with friends?</b> Sign in to Game Center on each device, open Play Online from the lobby, then find opponents or invite friends. A table seats 2 to 4 players and the host picks the game. Only games that everyone at the table can play are listed.</li>
+        <h3 class="faq-title"><span class="i18n zh">常見問題</span><span class="i18n en">FAQ</span></h3>
 
-      <li class="i18n zh"><b>連線顯示登入失敗？</b> 請到 iOS【設定 ▸ Game Center】確認已登入，再回到 App 重試。</li>
-      <li class="i18n en"><b>Online says sign-in failed.</b> Check that you are signed in under iOS Settings ▸ Game Center, then return to the App and try again.</li>
+        <details>
+          <summary><span class="i18n zh">一定要有摺疊機才能玩嗎？</span><span class="i18n en">Do I need a foldable phone?</span></summary>
+          <p class="i18n zh">不用。一般手機和 iPad 都能玩大部分的遊戲；只有幾款用到摺疊角度的遊戲要在摺得起來的手機上玩，在其他裝置上會放在大廳最下面。</p>
+          <p class="i18n en">No. Most games play on any phone or iPad. Only the few games that use the hinge angle need a foldable; on other devices they're listed at the bottom of the lobby.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">Pro 包含什麼？</span><span class="i18n en">What does Pro include?</span></summary>
+          <p class="i18n zh">一次買斷（不是訂閱）：解鎖 Pro 限定的遊戲和連線對戰，並拿掉大廳裡的廣告。在 App Store 購買支援家人共享，同一個 Apple 帳號的 Apple Watch 也會一起解鎖。</p>
+          <p class="i18n en">A one-time purchase (not a subscription) that unlocks the Pro-only games and online play, and removes the ads in the lobby. Purchases on the App Store support Family Sharing and also unlock on an Apple Watch using the same Apple Account.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">買過了但還是鎖著？</span><span class="i18n en">I bought Pro but games are still locked.</span></summary>
+          <p class="i18n zh">到購買畫面點「回復購買」。請確認裝置登入的是購買時的帳號（iPhone、iPad 是 Apple 帳號，Android 是 Google 帳號），並且連得上網路。</p>
+          <p class="i18n en">Open the purchase screen and tap “Restore purchase”. Make sure the device is signed in to the account you bought it with (your Apple Account on iPhone and iPad, your Google account on Android) and is online.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">怎麼跟朋友連線對戰？</span><span class="i18n en">How do I play online with friends?</span></summary>
+          <p class="i18n zh">在大廳右上角點雙人圖示，開一桌拿到四位數房號，朋友在同一頁輸入房號就能加入。2 到 4 人一桌，主揪點遊戲；只有每個人都玩得了的遊戲會出現在清單裡。連線對戰是 Pro 的功能，要加入的每個人都需要 Pro。</p>
+          <p class="i18n en">Tap the two-people icon at the top right of the lobby and open a table to get a four-digit room code. Friends enter the code on the same screen to join. A table seats 2 to 4 players and the host picks the game; only games everyone at the table can play are listed. Online play is part of Pro, so everyone who joins needs Pro.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">排行榜在哪裡看？</span><span class="i18n en">Where are the leaderboards?</span></summary>
+          <p class="i18n zh">每款遊戲都有排行榜：iPhone、iPad 用 Game Center，Android 用 Google Play 遊戲。</p>
+          <p class="i18n en">Every game has a leaderboard: Game Center on iPhone and iPad, Google Play Games on Android.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">會顯示廣告嗎？</span><span class="i18n en">Does the app show ads?</span></summary>
+          <p class="i18n zh">免費版只在大廳的遊戲清單裡顯示廣告，遊戲進行中沒有；購買 Pro 後不再顯示。</p>
+          <p class="i18n en">The free version shows ads only in the game list in the lobby, never during a game. Ads are removed after you buy Pro.</p>
+        </details>
+        <details>
+          <summary><span class="i18n zh">彈珠台一直偏一邊？</span><span class="i18n en">The pinball keeps drifting to one side.</span></summary>
+          <p class="i18n zh">彈珠台會跟著手機傾斜。想固定的話，在遊戲畫面把「會傾斜」切成「不傾斜」。</p>
+          <p class="i18n en">The table follows the tilt of your phone. To keep it level, switch “Tilt on” to “Tilt off” on the game screen.</p>
+        </details>
+      </section>
+    </main>
 
-      <li class="i18n zh"><b>會顯示廣告嗎？</b> 免費版只在大廳的遊戲清單裡顯示廣告，遊戲進行中沒有；購買 Pro 後不再顯示。</li>
-      <li class="i18n en"><b>Does the app show ads?</b> The free version shows ads only in the game list in the lobby, never during a game. Ads are removed after you buy Pro.</li>
-
-      <li class="i18n zh"><b>彈珠台一直偏一邊？</b> 彈珠台會跟著手機傾斜。想固定的話，在遊戲畫面把「會傾斜」切成「不傾斜」。</li>
-      <li class="i18n en"><b>The pinball keeps drifting to one side.</b> The table follows the tilt of your phone. To keep it level, switch “Tilt on” to “Tilt off” on the game screen.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Policies</h2>
-    <ul>
-      <li>
-        <a href="fold-club-privacy-policy.html">
-          <span class="i18n zh">隱私權政策 Privacy Policy</span>
-          <span class="i18n en">Privacy Policy</span>
-        </a>
-      </li>
-    </ul>
+    <footer>
+      <div class="links">
+        <a href="fold-club-privacy-policy.html"><span class="i18n zh">隱私權政策</span><span class="i18n en">Privacy Policy</span></a>
+        <a href="https://apps.apple.com/app/id6833069611">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=tw.puyan.foldclub">Google Play</a>
+      </div>
+      <small>© 2026 Puyan Lin</small>
+      <small class="i18n zh">Apple、Apple 標誌、iPhone、iPad 和 Apple Watch 是 Apple Inc. 在美國及其他國家和地區註冊的商標；App Store 是 Apple Inc. 的服務標誌。Google Play 和 Google Play 標誌是 Google LLC 的商標。</small>
+      <small class="i18n en">Apple, the Apple logo, iPhone, iPad, and Apple Watch are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</small>
+    </footer>
   </div>
 
   <script>
-    (function(){
-      const LS_KEY = 'fold_club_lang';
-      const zhBtn = document.getElementById('btn-zh');
-      const enBtn = document.getElementById('btn-en');
-      const setTitle = (lang) => {
-        document.title = (lang === 'en') ? 'Fold Club Support' : '不摺手段 支援 Support';
-      };
-      const setLang = (lang) => {
+    (function () {
+      var KEY = 'fold_club_lang';
+      var zhBtn = document.getElementById('btn-zh');
+      var enBtn = document.getElementById('btn-en');
+      function setLang(lang) {
         document.documentElement.setAttribute('lang', lang);
-        localStorage.setItem(LS_KEY, lang);
-        const zhActive = lang.startsWith('zh');
-        zhBtn.setAttribute('aria-pressed', String(zhActive));
-        enBtn.setAttribute('aria-pressed', String(!zhActive));
-        setTitle(lang);
-      };
-      zhBtn.addEventListener('click', () => setLang('zh-Hant'));
-      enBtn.addEventListener('click', () => setLang('en'));
-
-      // initialize language from storage or browser preference
-      const saved = localStorage.getItem(LS_KEY);
-      if (saved) {
-        setLang(saved);
-      } else {
-        const prefersZh = navigator.language && navigator.language.toLowerCase().includes('zh');
-        setLang(prefersZh ? 'zh-Hant' : 'en');
+        try { localStorage.setItem(KEY, lang); } catch (e) {}
+        var zh = lang.indexOf('zh') === 0;
+        zhBtn.setAttribute('aria-pressed', String(zh));
+        enBtn.setAttribute('aria-pressed', String(!zh));
+        document.title = zh ? '不摺手段 Fold Club' : 'Fold Club';
+      }
+      zhBtn.addEventListener('click', function () { setLang('zh-Hant'); });
+      enBtn.addEventListener('click', function () { setLang('en'); });
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      if (saved) { setLang(saved); }
+      else {
+        var nav = (navigator.language || '').toLowerCase();
+        setLang(nav.indexOf('zh') === 0 ? 'zh-Hant' : 'en');
       }
     })();
   </script>
 </body>
 </html>
-
-
